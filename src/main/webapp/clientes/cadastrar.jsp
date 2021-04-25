@@ -1,0 +1,60 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Cadastrar Cliente</title>
+    </head>
+    <body class="container">
+        <c:import url="../header.jsp"/>
+
+        <c:if test="${empty cliente}">
+
+            <form action="CadastrarClienteServlet" method="POST">
+                <label class="form-label">ID</label><br/>
+                <input type ="text" name="id" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">Nome</label><br/>
+                <input type ="text" name="nome" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">CPF</label><br/>
+                <input type ="text" name="cpf" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">Data de Nascimento</label><br/>
+                <input type ="date" name="datanasc" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">E-mail</label><br/>
+                <input type ="text" name="email" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">Endereço</label><br/>
+                <input type ="text" name="endereco" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">Telefone</label><br/>
+                <input type ="text" name="telefone" required="true" class="form-control"/><br/><br/>
+                <label class="form-label">Sexo</label><br/>
+                <input type ="text" name="sexo" required="true" class="form-control"/><br/><br/>
+
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </form>
+        </c:if>
+        <c:if test="${not empty cliente}">
+
+            <form action="AlterarClienteServlet" method="POST">
+                <label>ID</label><br/>
+                <input type ="text" name="id" required="true" value="${cliente.id}" readonly="true" class="form-control"/><br/><br/>
+                <label>Nome</label><br/>
+                <input type ="text" name="nome" required="true" value="${cliente.nome}" class="form-control"/><br/><br/>
+                <label>CPF</label><br/>
+                <input type ="text" name="cpf" required="true" value="${cliente.cpf}" class="form-control"/><br/><br/>
+                <label>Data de Nascimento</label><br/>
+                <input type ="date" name="datanasc" required="true" value="${cliente.datanasc}" class="form-control"/><br/><br/>
+                <label>E-mail</label><br/>
+                <input type ="text" name="email" required="true" value="${cliente.email}" class="form-control"/><br/><br/>
+                <label>Endereço</label><br/>
+                <input type ="text" name="endereco" required="true" value="${cliente.endereco}" class="form-control"/><br/><br/>
+                <label>Telefone</label><br/>
+                <input type ="text" name="telefone" required="true" value="${cliente.telefone}" class="form-control"/><br/><br/>
+                <label>Sexo</label><br/>
+                <input type ="text" name="sexo" required="true" value="${cliente.sexo}" class="form-control"/><br/><br/>
+
+                <button type="submit" class="btn btn-success">Atualizar</button>
+            </form>
+        </c:if>
+        <c:import url="../footer.jsp"/>
+    </body>
+</html>
