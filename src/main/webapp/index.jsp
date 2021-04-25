@@ -12,18 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body class="container">
+    <body class="">
         <c:import url="header.jsp"/>
-        <h1>Menu</h1>
-        
-        <br/>
-        <a href="ClientesServlet">Lista Clientes</a>
-        <br/>
-        <a href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
-        
-        <br/><br/>
-        <c:import url="footer.jsp"/>
-        
-        
+        <c:import url="navBar.jsp"/>
+
+
+
     </body>
 </html>

@@ -6,11 +6,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastrar Cliente</title>
     </head>
-    <body class="container">
+    <body class="">
         <c:import url="../header.jsp"/>
 
         <c:if test="${empty cliente}">
-
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class=" navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="../index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../ClientesServlet">Lista Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cadastrar.jsp">Cadastrar Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <form action="CadastrarClienteServlet" method="POST">
                 <label class="form-label">ID</label><br/>
                 <input type ="text" name="id" required="true" class="form-control"/><br/><br/>
@@ -33,7 +47,21 @@
             </form>
         </c:if>
         <c:if test="${not empty cliente}">
-
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class=" navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ClientesServlet">Lista Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <form action="AlterarClienteServlet" method="POST">
                 <label>ID</label><br/>
                 <input type ="text" name="id" required="true" value="${cliente.id}" readonly="true" class="form-control"/><br/><br/>

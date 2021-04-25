@@ -12,84 +12,95 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lista de Clientes</title>     
     </head>
-    <body class="container">
+    <body class="">
         <c:import url="header.jsp"/>
-        
+        <c:import url="navBar.jsp"/>
         <script type="text/javascript">
             function mostrarTelaConfirmacao(nome, id) {
-                
+
                 $("#nomeCliente").html(nome);
                 $("#idCliente").val(id);
                 var modalConfirmacao = $("#confirmarExclusao");
                 modalConfirmacao.show();
             }
-            
+
             function fecharTelaConfirmacao() {
                 $("#confirmarExclusao").hide();
             }
-            
+
             function deletarCliente() {
                 var id = $("#idCliente").val();
                 fecharTelaConfirmacao();
-                  $.ajax( "ExcluirClienteServlet?id=" + id).done(function() {
-                      //SUCESSO
-                        location.reload();
-                      })
-                      .fail(function() {
-                        console.log( "error" );
-                      });           
+                $.ajax("ExcluirClienteServlet?id=" + id).done(function () {
+                    //SUCESSO
+                    location.reload();
+                })
+                        .fail(function () {
+                            console.log("error");
+                        });
             }
-            
+
         </script>
-        
+
         <h1>Clientes:</h1>
-        
-        <table class="table">
-            <th>ID</th>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Data de Nascimento</th>
-            <th>E-mail</th>
-            <th>Endereço</th>
-            <th>Telefone</th>
-            <th>Sexo</th>
-            
-            <c:forEach items="${listaClientes}" var="cliente">
+
+        <table id="table" class="table">
+            <thead class="thead-dark">
                 <tr>
-                    <td>${cliente.id}</td>
-                    <td>${cliente.nome}</td>
-                    <td>${cliente.cpf}</td>
-                    <td>${cliente.datanasc}</td>
-                    <td>${cliente.email}</td>
-                    <td>${cliente.endereco}</td>
-                    <td>${cliente.telefone}</td>
-                    <td>${cliente.sexo}</td>
-                    <td><a href="AlterarClienteServlet?id=${cliente.id}">Alterar</td>
-                    
-                    <td><button type="button" class="btn btn-link" onclick="mostrarTelaConfirmacao(`${cliente.nome}`,`${cliente.id}`)">Excluir</button></td>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>E-mail</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>Sexo</th>
+                    <th></th>
+                    <th></th>
                 </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaClientes}" var="cliente">
+                    <tr>
+                        <td>${cliente.id}</td>
+                        <td>${cliente.nome}</td>
+                        <td>${cliente.cpf}</td>
+                        <td>${cliente.datanasc}</td>
+                        <td>${cliente.email}</td>
+                        <td>${cliente.endereco}</td>
+                        <td>${cliente.telefone}</td>
+                        <td>${cliente.sexo}</td>
+                        <td><button type="button" class="btn btn-warning" ><a href="AlterarClienteServlet?id=${cliente.id}">Alterar</a></td>
+
+                        <td><button type="button" class="btn btn-danger" onclick="mostrarTelaConfirmacao(`${cliente.nome}`, `${cliente.id}`)">Excluir</button></td>
+                    </tr>
+                </tbody>
             </c:forEach>   
         </table>
-        
+
         <!-- Modal -->
         <div class="modal" id="confirmarExclusao">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Confirmar Exclusão</h5>
-              </div>
-              <div class="modal-body">
-                  <p>Confirmar exclusão do cliente <label id="nomeCliente"></label> ?</p>
-                  <input type="hidden" id="idCliente"/>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" onclick="fecharTelaConfirmacao()">Cancelar</button>
-                  <button type="button" class="btn btn-primary" onclick="deletarCliente()">Confirmar</button>
-              </div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmar Exclusão</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirmar exclusão do cliente <label id="nomeCliente"></label> ?</p>
+                        <input type="hidden" id="idCliente"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="fecharTelaConfirmacao()">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="deletarCliente()">Confirmar</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        
+        <script>
+            $(document).ready(function () {
+                $('#table').DataTable();
+            });
+        </script>
         <c:import url="footer.jsp"/>
     </body>
 </html>
