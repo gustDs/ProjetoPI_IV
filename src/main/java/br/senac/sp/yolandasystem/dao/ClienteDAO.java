@@ -23,6 +23,7 @@ import java.util.logging.Logger;
  */
 public class ClienteDAO {
 
+    //CREATE CLIENTES
     public static boolean cadastrar(Cliente cliente) {
         boolean ok = true;
         String query = "insert into cliente (id, nome, cpf, datanasc, email, endereco, telefone, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -47,6 +48,7 @@ public class ClienteDAO {
         return ok;
     }
 
+    //READ CLIENTES
     public static List<Cliente> getClientes() {
         List<Cliente> clientes = new ArrayList<>();
 
@@ -101,6 +103,7 @@ public class ClienteDAO {
         return cliente;
     }
     
+    //DELETE CLIENTES
      public static boolean deletar(int id) {
         boolean ok = true;
         String query = "delete from cliente where id=?";
@@ -116,6 +119,8 @@ public class ClienteDAO {
         }
         return ok;
     }
+     
+     //UPDATE CLIENTES
      public static boolean atualizar(Cliente cliente) {
         boolean ok = true;
         String query = "update cliente set nome=?, cpf=?, datanasc=?, email=?, endereco=?, telefone=?, sexo=? where id=?";

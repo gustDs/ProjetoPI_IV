@@ -25,6 +25,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProdutosServlet">Lista Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos/cadastrar.jsp">Cadastrar Produto</a>
+                    </li>
                 </ul>
             </div>
         </nav>
