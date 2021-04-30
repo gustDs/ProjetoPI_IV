@@ -26,20 +26,19 @@ public class ClienteDAO {
     //CREATE CLIENTES
     public static boolean cadastrar(Cliente cliente) {
         boolean ok = true;
-        String query = "insert into cliente (id, nome, cpf, datanasc, email, endereco, telefone, sexo) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into cliente (nome, cpf, datanasc, email, endereco, telefone, sexo) values (?, ?, ?, ?, ?, ?, ?)";
 
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, cliente.getId());
-            ps.setString(2, cliente.getNome());
-            ps.setString(3, cliente.getCpf());
-            ps.setDate(4, cliente.getDatanasc());
-            ps.setString(5, cliente.getEmail());
-            ps.setString(6, cliente.getEndereco());
-            ps.setString(7, cliente.getTelefone());
-            ps.setString(8, cliente.getSexo());
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getCpf());
+            ps.setDate(3, cliente.getDatanasc());
+            ps.setString(4, cliente.getEmail());
+            ps.setString(5, cliente.getEndereco());
+            ps.setString(6, cliente.getTelefone());
+            ps.setString(7, cliente.getSexo());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

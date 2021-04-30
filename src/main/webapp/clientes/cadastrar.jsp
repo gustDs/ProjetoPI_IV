@@ -32,8 +32,7 @@
                 </div>
             </nav>
             <form action="CadastrarClienteServlet" method="POST">
-                <label class="form-label">ID</label><br/>
-                <input type ="text" name="id" required="true" class="form-control"/><br/><br/>
+               
                 <label class="form-label">Nome</label><br/>
                 <input type ="text" name="nome" required="true" class="form-control"/><br/><br/>
                 <label class="form-label">CPF</label><br/>
@@ -69,8 +68,8 @@
                 </div>
             </nav>
             <form action="AlterarClienteServlet" method="POST">
-                <label>ID</label><br/>
-                <input type ="text" name="id" required="true" value="${cliente.id}" readonly="true" class="form-control"/><br/><br/>
+                
+                <input type ="text" name="id" required="true" value="${cliente.id}" hidden="true" class="form-control"/><br/><br/>
                 <label>Nome</label><br/>
                 <input type ="text" name="nome" required="true" value="${cliente.nome}" class="form-control"/><br/><br/>
                 <label>CPF</label><br/>

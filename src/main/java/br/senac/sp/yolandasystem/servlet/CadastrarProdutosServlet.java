@@ -17,9 +17,6 @@ public class CadastrarProdutosServlet extends HttpServlet {
         
         //PASSO 1 - RECUPERAR OS PARAMETROS
         
-        String idstr = request.getParameter("id");
-        Integer id = Integer.valueOf(idstr);
-        
         String filial = request.getParameter("filial");
         String nome = request.getParameter("nome");
         String categoria = request.getParameter("categoria");
@@ -33,7 +30,7 @@ public class CadastrarProdutosServlet extends HttpServlet {
         
         //PASSO 2 - INSERIR O CLIENTE NO BD
         
-        Produtos produtos = new Produtos(id, filial, nome, categoria, modelo, preco, quantidade);
+        Produtos produtos = new Produtos(0, filial, nome, categoria, modelo, preco, quantidade);
         boolean ok = ProdutosDAO.cadastrar(produtos);
         
         //PASSO 3 - REDIRECIONAR PARA TELA DE SUCESSO/ERRO

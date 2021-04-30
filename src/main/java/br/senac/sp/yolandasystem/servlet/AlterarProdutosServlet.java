@@ -20,8 +20,8 @@ public class AlterarProdutosServlet extends HttpServlet {
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
         
-        Produtos produtos = ProdutosDAO.getProduto(id);
-        request.setAttribute("produto", produtos);
+        Produtos produto = ProdutosDAO.getProduto(id);
+        request.setAttribute("produto", produto);
         
         request.getRequestDispatcher("/produtos/cadastrar.jsp").forward(request, response);
     }

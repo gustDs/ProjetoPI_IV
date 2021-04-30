@@ -17,11 +17,7 @@ public class ExcluirProdutosServlet extends HttpServlet {
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
         boolean ok = ProdutosDAO.deletar(id); 
-        if (ok) {
-            response.sendRedirect("sucesso.jsp");
-        } else {
-            response.sendRedirect("erro.jsp");
-        }
+        response.setStatus(ok? 200:500);
         
     }
 }

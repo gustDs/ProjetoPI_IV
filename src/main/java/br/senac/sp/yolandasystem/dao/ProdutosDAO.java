@@ -17,18 +17,17 @@ public class ProdutosDAO {
     public static boolean cadastrar(Produtos produtos) {
         boolean ok = true;
         
-        String query = "insert into produtos (id, filial, nome, categoria, modelo, preco, quantidade) values (?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into produtos (filial, nome, categoria, modelo, preco, quantidade) values (?, ?, ?, ?, ?, ?)";
         Connection con;
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setInt(1, produtos.getId());
-            ps.setString(2, produtos.getFilial());
-            ps.setString(3, produtos.getNome());
-            ps.setString(4, produtos.getCategoria());
-            ps.setString(5, produtos.getModelo());
-            ps.setDouble(6, produtos.getPreco());
-            ps.setInt(7, produtos.getQuantidade());
+            ps.setString(1, produtos.getFilial());
+            ps.setString(2, produtos.getNome());
+            ps.setString(3, produtos.getCategoria());
+            ps.setString(4, produtos.getModelo());
+            ps.setDouble(5, produtos.getPreco());
+            ps.setInt(6, produtos.getQuantidade());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);

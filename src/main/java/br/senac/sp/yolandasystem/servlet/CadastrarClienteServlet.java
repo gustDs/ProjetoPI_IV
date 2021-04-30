@@ -16,9 +16,7 @@ public class CadastrarClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         //PASSO 1 - RECUPERAR OS PARÂMETROS
         
-        String idstr = request.getParameter("id");
-        
-        Integer id = Integer.valueOf(idstr);
+      
         
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
@@ -35,7 +33,7 @@ public class CadastrarClienteServlet extends HttpServlet {
         
         //PASSO 2 - INSERIR O CLIENTE NO BD
         
-        Cliente cliente = new Cliente(id, nome, cpf, date, email, endereco, telefone, sexo);
+        Cliente cliente = new Cliente(0, nome, cpf, date, email, endereco, telefone, sexo);
         boolean ok = ClienteDAO.cadastrar(cliente);
         
         

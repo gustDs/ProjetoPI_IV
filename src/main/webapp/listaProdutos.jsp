@@ -13,11 +13,33 @@
         <title>Lsita de Produtos</title>
         
         <script type="text/javascript">
-            function mostrarTelaConfirmacao(nome, id) {
+            function mostrarTelaConfirmacao(modelo, id) {
+                
+                $("#modeloProduto").html(modelo);
+                $("#idProduto").val(id);
+                
                 var modalConfirmacao = $("#confirmarExclusao");
                 modalConfirmacao.show();
                 
             }
+            
+            function fecharTelaConfirmacao() {
+                $("#confirmarExclusao").hide();
+            }
+            
+            function deletarProduto() {
+                var id = $("#idProduto").val();
+                fecharTelaConfirmacao();
+                $.ajax("ExcluirProdutosServlet?id=" + id).done(function () {
+                    //SUCESSO
+                    location.reload();
+                })
+                        .fail(function () {
+                            console.log("error");
+                        });
+            }
+            
+        </script>
     </head>
     <body class="">
         <c:import url="header.jsp"/>
@@ -43,7 +65,7 @@
                     <td>${produto.preco}</td>
                     <td>${produto.quantidade}</td>
                     <td><a href="AlterarProdutosServlet?id=${produto.id}">Alterar</a></td>
-                    <td><button type="button" class="btn btn-link" onclick="mostrarTelaConfirmacao()"</td>
+                    <td><button type="button" class="btn btn-link" onclick="mostrarTelaConfirmacao(`${produto.modelo}`, `${produto.id}`)">Excluir</td>
                 </tr>
             </c:forEach>    
         </table>
@@ -54,12 +76,12 @@
                         <h5 class="modal-title">Confirmar Exclusão</h5>
                     </div>
                     <div class="modal-body">
-                        <p>Confirmar exclusão do cliente <label id="nomeCliente"></label> ?</p>
-                        <input type="hidden" id="idCliente"/>
+                        <p>Confirmar exclusão do produto <label id="modeloProduto"></label> ?</p>
+                        <input type="hidden" id="idProduto"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" onclick="fecharTelaConfirmacao()">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="deletarCliente()">Confirmar</button>
+                        <button type="button" class="btn btn-primary" onclick="deletarProduto()">Confirmar</button>
                     </div>
                 </div>
             </div>

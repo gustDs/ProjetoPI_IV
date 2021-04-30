@@ -15,10 +15,9 @@
     <body>
         <c:import url="../header.jsp"/>
 
-        <c:if test="${empty produtos}">
+        <c:if test="${empty produto}">
             <form action="CadastrarProdutosServlet" method="POST">
-                <label class="form-label">ID</label><br/>
-                <input type ="text" name="id" required="true" class="form-control"/><br/><br/>
+             
                 <label class="form-label">Filial</label><br/>
                 <input type ="text" name="filial" required="true" class="form-control"/><br/><br/>
                 <label class="form-label">Nome</label><br/>
@@ -35,22 +34,22 @@
                 <button type="submit" class="btn btn-success">Cadastrar</button>
             </form> 
         </c:if>
-        <c:if test="${not empty produtos}">
+        <c:if test="${not empty produto}">
             <form action="AlterarProdutosServlet" method="POST">
                 <label class="form-label">ID</label><br/>
-                <input type ="text" name="id" required="true" value="${produto.id}" readonly="true"/> <br/><br/>
+                <input type ="text" name="id" required="true" value="${produto.id}" hidden = true class="form-control"/> <br/><br/>
                 <label class="form-label">Filial</label><br/>
-                <input type ="text" name="filial" required="true" value="${produto.filial}"/> <br/><br/>
+                <input type ="text" name="filial" required="true" value="${produto.filial}" class="form-control"/> <br/><br/>
                 <label class="form-label">Nome</label><br/>
-                <input type ="text" name="nome" required="true" value="${produto.nome}"/> <br/><br/>
+                <input type ="text" name="nome" required="true" value="${produto.nome}" class="form-control"/> <br/><br/>
                 <label class="form-label">Categoria</label><br/>
-                <input type ="text" name="categoria" required="true" value="${produto.categoria}"/> <br/><br/>
+                <input type ="text" name="categoria" required="true" value="${produto.categoria}" class="form-control"/> <br/><br/>
                 <label class="form-label">Modelo</label><br/>
-                <input type ="text" name="modelo" required="true" value="${produto.modelo}"/> <br/><br/>
+                <input type ="text" name="modelo" required="true" value="${produto.modelo}" class="form-control"/> <br/><br/>
                 <label class="form-label">Preço</label><br/>
-                <input type ="text" name="preco" required="true" value="${produto.preco}"/> <br/><br/>
+                <input type ="text" name="preco" required="true" value="${produto.preco}" class="form-control"/> <br/><br/>
                 <label class="form-label">Quantidade</label><br/>
-                <input type ="text" name="quantidade" required="true" value="${produto.quantidade}"/> <br/><br/>
+                <input type ="text" name="quantidade" required="true" value="${produto.quantidade}" class="form-control"/> <br/><br/>
 
                 <button type="submit" class="btn btn-success">Alterar</button>
             </form> 
