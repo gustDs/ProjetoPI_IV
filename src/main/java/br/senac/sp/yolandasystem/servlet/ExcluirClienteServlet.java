@@ -14,6 +14,8 @@ public class ExcluirClienteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        /*EXCLUI O CLIENTE A PARTIR DE SEU ID*/
+        
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
         boolean ok = ClienteDAO.deletar(id);

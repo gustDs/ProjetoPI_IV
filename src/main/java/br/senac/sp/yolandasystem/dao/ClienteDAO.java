@@ -22,6 +22,8 @@ import java.util.logging.Logger;
  * @author Martins
  */
 public class ClienteDAO {
+    
+    /*CLASSE DE QUERYS DA TABELA DE PRODUTOS*/
 
     //CREATE CLIENTES
     public static boolean cadastrar(Cliente cliente) {
@@ -76,6 +78,7 @@ public class ClienteDAO {
         return clientes;
     }
     
+    //PEGA O CLIENTE JÁ CADASTRADO E JOGA EM OUTRA TELA PARA PODER ATUALIZÁ-LO
     public static Cliente getCliente(int id) {
         Cliente cliente = null;
 

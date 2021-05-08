@@ -13,6 +13,8 @@ import java.util.logging.Logger;
 
 public class ProdutosDAO {
     
+    /*CLASSE DE QUERYS DA TABELA DE PRODUTOS*/
+    
     //CADASTRAR PRODUTOS
     public static boolean cadastrar(Produtos produtos) {
         boolean ok = true;
@@ -64,7 +66,7 @@ public class ProdutosDAO {
 
     }
     
-    //ALTERAR PRODUTOS
+    //PEGA O CLIENTE JÁ CADASTRADO E JOGA EM OUTRA TELA PARA PODER ATUALIZÁ-LO
      public static Produtos getProduto(int id) {
         Produtos produtos = null;
         String query = "select * from produtos where id=?";
@@ -109,6 +111,7 @@ public class ProdutosDAO {
 
     }
     
+    //ALTERAR PRODUTOS
     public static boolean atualizar(Produtos produtos) {
         boolean ok = true;
         String query = "update produtos set filial=?, nome=?, categoria=?, modelo=?, preco=?, quantidade=? where id=?";

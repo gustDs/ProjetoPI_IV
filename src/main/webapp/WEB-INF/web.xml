@@ -36,6 +36,10 @@
         <servlet-name>AlterarProdutosServlet</servlet-name>
         <servlet-class>br.senac.sp.yolandasystem.servlet.AlterarProdutosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClientesVendasServlet</servlet-name>
+        <servlet-class>br.senac.sp.yolandasystem.servlet.ClientesProdutosVendasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClientesServlet</servlet-name>
         <url-pattern>/ClientesServlet</url-pattern>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>AlterarProdutosServlet</servlet-name>
         <url-pattern>/AlterarProdutosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientesVendasServlet</servlet-name>
+        <url-pattern>/ClientesVendasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

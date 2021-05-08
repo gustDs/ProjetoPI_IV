@@ -24,10 +24,9 @@ public class ClientesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Cliente> listaClientes = ClienteDAO.getClientes();
-        
+        //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
+        List<Cliente> listaClientes = ClienteDAO.getClientes();   
         request.setAttribute("listaClientes", listaClientes);
-        
         request.getRequestDispatcher("/listaClientes.jsp").forward(request, response);
 
     }

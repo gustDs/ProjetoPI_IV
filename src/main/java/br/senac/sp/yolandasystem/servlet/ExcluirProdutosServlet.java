@@ -14,6 +14,8 @@ public class ExcluirProdutosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        /*EXCLUI O PRODUTO A PARTIR DE SEU ID*/
+        
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
         boolean ok = ProdutosDAO.deletar(id); 
