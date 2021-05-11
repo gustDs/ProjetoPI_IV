@@ -15,37 +15,29 @@ public class CadastrarClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //PASSO 1 - RECUPERAR OS PARÂMETROS
-        
-      
-        
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("cpf");
-        String datanasc = request.getParameter("datanasc");
-        
+
+        String nome = request.getParameter("nmCliente");
+        String cpf = request.getParameter("anCpf");
+        String datanasc = request.getParameter("dtNascimento");
+
         Date date = Date.valueOf(datanasc);
-        
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("endereco");
-        String telefone = request.getParameter("telefone");
-        String sexo = request.getParameter("sexo");
-        
-        
-        
+
+        String email = request.getParameter("anEmail");
+        String endereco = request.getParameter("anLogradouro");
+        String telefone = request.getParameter("anTelefone");
+        String sexo = request.getParameter("dmSexo");
+
         //PASSO 2 - INSERIR O CLIENTE NO BD
-        
         Cliente cliente = new Cliente(0, nome, cpf, date, email, endereco, telefone, sexo);
         boolean ok = ClienteDAO.cadastrar(cliente);
-        
-        
+
         //PASSO 3 -= REDIRECIONAR PARA TELA DE SUCESSO / ERRO
-        
-        if(ok) {
-            response.sendRedirect(request.getContextPath()+ "/sucesso.jsp");
-        }else {
-            String msg = "Não foi possível cadastrar o cliente!";
-            request.setAttribute("msgErro", msg);
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-           
+        if (ok) {
+            response.setStatus(200);
+            //response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
+        } else {
+            response.setStatus(200);
+
         }
     }
 

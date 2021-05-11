@@ -27,7 +27,7 @@ public class ClientesServlet extends HttpServlet {
         //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
         List<Cliente> listaClientes = ClienteDAO.getClientes();   
         request.setAttribute("listaClientes", listaClientes);
-        request.getRequestDispatcher("/listaClientes.jsp").forward(request, response);
+        request.getRequestDispatcher("/clientes/cadastrar.jsp").forward(request, response);
 
     }
 

@@ -17,12 +17,16 @@ public class AlterarClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
 
         Cliente cliente = ClienteDAO.getCliente(id);
+
+        System.out.println("cliente " + cliente.getClass().getSimpleName());
         request.setAttribute("cliente", cliente);
-        request.getRequestDispatcher("/clientes/cadastrar.jsp").forward(request, response);
+        response.getWriter().write(cliente.toString());
+        // request.getRequestDispatcher("/clientes/cadastrar.jsp").forward(request, response);
 
     }
 
@@ -35,18 +39,18 @@ public class AlterarClienteServlet extends HttpServlet {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String datanasc = request.getParameter("datanasc");
-        
+
         Date date = Date.valueOf(datanasc);
-        
+
         String email = request.getParameter("email");
         String endereco = request.getParameter("endereco");
         String telefone = request.getParameter("telefone");
         String sexo = request.getParameter("sexo");
-        
+
         Cliente cliente = new Cliente(id, nome, cpf, date, email, endereco, telefone, sexo);
         boolean ok = ClienteDAO.atualizar(cliente);
         Redirect.sendRedirect(ok, response);
-   
+
     }
 
 }

@@ -39,6 +39,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return String.format("ID: %s <br/> Nome: %s <br/> CPF: %s <br/> Data de Nascimento: %s <br/> E-mail: %s <br/> Endereço: %s <br/> Telefone: %s <br/> Sexo: %s <br/>", id, nome, cpf, datanasc, email, endereco, telefone, sexo);
+        return String.format("{\"id\": %s, \"nmCliente\": \"%s\", \"anCpf\": \"%s\" , \"dtNascimento\": \"%s\" , \"anEmail\": \"%s\" , \"anLogradouro\": \"%s\" , \"anTelefone\": \"%s\" , \"dmSexo\": \"%s\" }", id, nome, cpf, datanasc, email, endereco, telefone, sexo);
     }
 }

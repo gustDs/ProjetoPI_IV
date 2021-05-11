@@ -20,10 +20,7 @@
                         <a class="nav-link" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ClientesServlet">Lista Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="clientes/cadastrar.jsp">Cadastrar Clientes</a>
+                        <a class="nav-link" href="ClientesServlet">Clientes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ProdutosServlet">Lista Produtos</a>
