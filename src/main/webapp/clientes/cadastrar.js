@@ -44,7 +44,7 @@ $(document).ready(function () {
     /* CLICK TABLE*/
     $("#table tbody tr").on("click", function () {
         $("tr").removeClass("cc-tabela-tr-selecionada")
-        console.log($(this))
+        fValidaSalvar(1)
         $(this).addClass("cc-tabela-tr-selecionada")
         fEditarCliente($(this).attr("data-id"))
     });
@@ -105,13 +105,10 @@ $(document).ready(function () {
         /* SE FOR UM NOVO REGISTRO [POST]*/
         if (wId == "") {
             /* VALIDA CAMPOS */
-            if (wNomeCliente == "") {
-                alertify.set("notifier", "position", "top-right");
-                alertify.error("<p style='color:white;font-size:16px;'>Nome do Cliente não informado</p>", "danger", 10);
-                $("[name='nmCliente']").addClass("border border-danger");
-                return;
-            } else {
-                $("[name='nmCliente']").removeClass("border border-danger");
+            var wValoresValidos = fValidaSalvar();
+            /* SE CAMPOS OBRIGATORIOS NAO PREENCHIDO*/
+            if (!wValoresValidos) {
+                return
             }
             /* JSON */
             var wData = "";
@@ -151,8 +148,46 @@ $(document).ready(function () {
             });
         } else {
             /* ID PREENCHIDO FAZ UM PUT */
-            alertify.set("notifier", "position", "top-right");
-            alertify.error("<p style='color:white;font-size:16px;'>Ainda Estamos Trabalhando nisso desculpa ;(</p>", "danger", 10);
+            /* JSON */
+            var wData = "";
+            wData += "id=" + wId + "&";
+            wData += "nmCliente=" + wNomeCliente + "&";
+            wData += "anCpf=" + wCpf + "&";
+            wData += "dtNascimento=" + wNascimento + "&";
+            wData += "anEmail=" + wEmail + "&";
+            wData += "anLogradouro=" + wLogradouro + "&";
+            wData += "anTelefone=" + wTelefone + "&";
+            wData += "dmSexo=" + wSexo + "";
+            wData = encodeURI(wData)
+
+            wURI = "AlterarClienteServlet"
+
+
+
+            $.ajax({
+                type: "post",
+                url: wURI,
+                data: wData,
+            }).then((res, textStatus, jqXHR) => {
+                console.log("res")
+                console.log(res)
+                var wStatus = jqXHR.status
+                if (wStatus == 200) {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.notify("<p style='color:white;font-size:16px;'>Cliente Alterado com Sucesso com Sucesso</p>", "success", 10);
+                    setTimeout(function () {
+                        document.location.reload(true);
+                    }, 1500);
+                } else {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[001]</p>", "danger", 10);
+                }
+            }).catch((err) => {
+                alertify.set("notifier", "position", "top-right");
+                alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[002]</p>", "danger", 10);
+                console.log(err)
+
+            });
         }
     }
     /* DELETA CLIENTE */
@@ -177,6 +212,47 @@ $(document).ready(function () {
         });
 
     }
+    function fValidaSalvar(pOpcao) {
+        /* VARIAVEIS */
+        var wInpBoNull = [],
+                wStrInp = "";
+        /* REMOVE CLASS */
+        if (pOpcao == 1) {
+            $("[required='required']").each(function (wIdx, wEl) {
 
+                $(wEl).removeClass("border border-danger");
+                $(wEl).siblings('label').removeClass("text-danger");
+
+            });
+            return true;
+        }
+        /* VALIDA CAMPOS */
+        $("[required='required']").each(function (wIdx, wEl) {
+            var wValor = $(wEl).val();
+            if (!wValor) {
+                /* INSERT */
+                $(wEl).addClass("border border-danger");
+                $(wEl).siblings('label').addClass("text-danger");
+                wInpBoNull.push($(wEl).siblings('label').text())
+            } else {
+                $(wEl).removeClass("border border-danger");
+                $(wEl).siblings('label').removeClass("text-danger");
+            }
+        });
+
+        wInpBoNull.forEach(wInpBoNull => {
+            wStrInp += "<br> - " + wInpBoNull + "";
+        });
+
+
+        if (wInpBoNull.length > 0) {
+            alertify.set("notifier", "position", "top-right");
+            alertify.error("<p style='color:white;font-size:16px;'> Há campos obrigatórios não preenchidos: " + wStrInp + "</p>", "danger", 10);
+            return false;
+        } else {
+            return true;
+        }
+    }
+    ;
 });
 

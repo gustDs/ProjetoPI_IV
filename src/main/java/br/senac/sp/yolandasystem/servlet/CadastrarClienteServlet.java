@@ -32,13 +32,7 @@ public class CadastrarClienteServlet extends HttpServlet {
         boolean ok = ClienteDAO.cadastrar(cliente);
 
         //PASSO 3 -= REDIRECIONAR PARA TELA DE SUCESSO / ERRO
-        if (ok) {
-            response.setStatus(200);
-            //response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
-        } else {
-            response.setStatus(200);
-
-        }
+        response.setStatus(ok ? 200 : 500);
     }
 
 }

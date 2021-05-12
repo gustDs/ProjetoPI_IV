@@ -19,6 +19,7 @@ public class ExcluirClienteServlet extends HttpServlet {
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
         boolean ok = ClienteDAO.deletar(id);
+
         response.setStatus(ok? 200:500);
     }
 

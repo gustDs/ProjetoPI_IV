@@ -7,7 +7,53 @@ and open the template in the editor.
     Created on : 09/05/2021, 22:49:54
     Author     : Richard Gomes
 */
+
+
+.cc-btn-verde{color: #ffffff;background-color: #7cb342;border-color: #7cb342;}
+.cc-btn-verde:focus, .cc-btn-verde.focus{color: #ffffff;background-color: #7cb342;border-color: #7cb342;}
+.cc-btn-verde:hover{color: #ffffff;background-color: #567d2e;border-color: #567d2e;}
+.cc-btn-verde:active, .cc-btn-verde.active, .open > .dropdown-toggle.cc-btn-verde{color: #ffffff;background-color: #7cb342;border-color: #7cb342;}
+.cc-btn-verde:active:hover, .cc-btn-verde.active:hover, .open > .dropdown-toggle.cc-btn-verde:hover, .cc-btn-verde:active:focus, .cc-btn-verde.active:focus, .open > .dropdown-toggle.cc-btn-verde:focus, .cc-btn-verde:active.focus, .cc-btn-verde.active.focus, .open > .dropdown-toggle.cc-btn-verde.focus{color: #ffffff;background-color: #7cb342;border-color: #7cb342;}
+.cc-btn-verde:active, .cc-btn-verde.active, .open > .dropdown-toggle.cc-btn-verde{background-image: none;}
+
+
+.cc-btn-azul{color: #ffffff;background-color: #1e88e5;border-color: #1e88e5;}
+.cc-btn-azul:focus, .cc-btn-azul.focus{color: #ffffff;background-color: #1e88e5;border-color: #1e88e5;}
+.cc-btn-azul:hover{color: #ffffff;background-color: #155fa0;border-color: #155fa0;}
+.cc-btn-azul:active, .cc-btn-azul.active, .open > .dropdown-toggle.cc-btn-azul{color: #ffffff;background-color: #1e88e5;border-color: #1e88e5;}
+.cc-btn-azul:active:hover, .cc-btn-azul.active:hover, .open > .dropdown-toggle.cc-btn-azul:hover, .cc-btn-azul:active:focus, .cc-btn-azul.active:focus, .open > .dropdown-toggle.cc-btn-azul:focus, .cc-btn-azul:active.focus, .cc-btn-azul.active.focus, .open > .dropdown-toggle.cc-btn-azul.focus{color: #ffffff;background-color: #1e88e5;border-color: #1e88e5;}.cc-btn-azul:active, .cc-btn-azul.active, .open > .dropdown-toggle.cc-btn-azul{background-image: none;}
+
+
+.cc-btn-vermelho{color: #ffffff;background-color: #e53935;border-color: #e53935;}
+.cc-btn-vermelho:focus, .cc-btn-vermelho.focus{color: #ffffff;background-color: #e53935;border-color: #e53935;}
+.cc-btn-vermelho:hover{color: #ffffff;background-color: #a02725;border-color: #a02725;}
+.cc-btn-vermelho:active, .cc-btn-vermelho.active, .open > .dropdown-toggle.cc-btn-vermelho{color: #ffffff;background-color: #e53935;border-color: #e53935;}
+.cc-btn-vermelho:active:hover, .cc-btn-vermelho.active:hover, .open > .dropdown-toggle.cc-btn-vermelho:hover, .cc-btn-vermelho:active:focus, .cc-btn-vermelho.active:focus, .open > .dropdown-toggle.cc-btn-vermelho:focus, .cc-btn-vermelho:active.focus, .cc-btn-vermelho.active.focus, .open > .dropdown-toggle.cc-btn-vermelho.focus{color: #ffffff;background-color: #e53935;border-color: #e53935;}.cc-btn-vermelho:active, .cc-btn-vermelho.active, .open > .dropdown-toggle.cc-btn-vermelho{background-image: none;}
+
 tbody tr:hover {box-shadow:inset #fff17680 0 0 0 100px !important;}
+
+
+.cc-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 table{
     border: 1px solid #ddd !important;

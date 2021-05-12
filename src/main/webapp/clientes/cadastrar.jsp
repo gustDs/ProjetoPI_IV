@@ -33,7 +33,7 @@
 
             <div class="cc-row m-auto m-4 p-4 border">
                 <div class="cc-col w-100" > 
-                    <div class="cc-col cc-col-14 border  p-4" >
+                    <div class="mt-4 border p-4" style="width:35%;float:left;margin-left:5px;margin-right:5px">
                         <div class="table-responsive border">
                             <table id="table" class="table border">
                                 <thead  class="text-center " style="background: #3b3b3b; color:#fff;">
@@ -70,57 +70,61 @@
                             </table>
                         </div>
                     </div>
-                    <div class="cc-col cc-col-20 mt-4 border p-4" >
-                        <form action="clientes/CadastrarClienteServlet" method="POST">
-                            <div class="cc-row">
-                                <div class="cc-col col-2">
-                                    <label class="form-label">Codigo</label><br/>
-                                    <input type ="text" id="idCliente" disabled name="idCliente" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-8">
-                                    <label class="form-label">Nome</label><br/>
-                                    <input type ="text" name="nmCliente" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-4">
-                                    <label class="form-label">CPF</label><br/>
-                                    <input type ="text" name="anCpf" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-3">
-                                    <label class="form-label">Data de Nascimento</label><br/>
-                                    <input type ="date" name="dtNascimento" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-5">
-                                    <label class="form-label">Sexo</label><br/>
-                                    <input type ="text" name="dmSexo" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-5">
-                                    <label class="form-label">Endereço</label><br/>
-                                    <input type ="text" name="anLogradouro" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-5">
-                                    <label class="form-label">E-mail</label><br/>
-                                    <input type ="text" name="anEmail" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-col col-5">
-                                    <label class="form-label">Telefone</label><br/>
-                                    <input type ="text" name="anTelefone" required="true" class="form-control"/>
-                                </div>
-                                <div class="cc-row w-100 mt-3">
-                                    <div class="cc-col col-3 ">
-                                        <input type="button" data-btn-novo="1"  class="w-100 btn btn-primary" value="NOVO"></input>
-                                    </div>
-                                    <div class="cc-col col-3 ">
+                    <div class="mt-4 border p-4" style="width:60%;float:left;margin-left:5px;margin-right:5px" >
 
-                                        <input type="button" data-btn-salvar="1"  class="w-100 btn btn-success" value="SALVAR"></input>
-                                    </div>
-                                    <div class="cc-col col-3 float-right">
-                                        <input type="button" data-btn-exluir="1"  class="w-100 btn btn-danger" value="EXCLUIR"></input>
-                                    </div>
-                                </div>
-
-
+                        <div class="cc-row">
+                            <div class="cc-col col-2">
+                                <label class="form-label">Codigo</label>
+                                <input type ="text" id="idCliente" disabled name="idCliente" class="form-control"/>
                             </div>
-                        </form>
+                            <div class="cc-col col-8">
+                                <label class="form-label">Nome</label>
+                                <input type ="text" name="nmCliente" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-col col-4">
+                                <label class="form-label">CPF</label>
+                                <input type ="text" name="anCpf" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-col col-3">
+                                <label class="form-label">Data de Nascimento</label>
+                                <input type ="date" name="dtNascimento" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-col col-5">
+                                <label class="form-label">Sexo</label>
+                                <select name="dmSexo" required='required' class="form-control">
+                                    <option value="0">Selecione</option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                        
+                            </div>
+                            <div class="cc-col col-5">
+                                <label class="form-label">Endereço</label>
+                                <input type ="text" name="anLogradouro" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-col col-5">
+                                <label class="form-label">E-mail</label>
+                                <input type ="text" name="anEmail" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-col col-5">
+                                <label class="form-label">Telefone</label>
+                                <input type ="text" name="anTelefone" required='required' class="form-control"/>
+                            </div>
+                            <div class="cc-row w-100 mt-3">
+                                <div class="cc-col col-3 ">
+                                    <button data-btn-novo="1" class="w-100 cc-btn  cc-btn-azul"><i class="fas fa-plus" aria-hidden="true">  NOVO</i></button>
+                                </div>
+                                <div class="cc-col col-3 ">
+                                    <button data-btn-salvar="1"  class="w-100  cc-btn cc-btn-verde"><i class="fas fa-check">   SALVAR</i></button>
+                                </div>
+                                <div class="cc-col col-1 float-right">
+                                    <button data-btn-exluir="1"  class="w-100 cc-btn cc-btn-vermelho" ><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
             </div>

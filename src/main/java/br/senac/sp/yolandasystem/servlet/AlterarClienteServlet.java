@@ -36,20 +36,21 @@ public class AlterarClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
-        String nome = request.getParameter("nome");
-        String cpf = request.getParameter("cpf");
-        String datanasc = request.getParameter("datanasc");
+
+        String nome = request.getParameter("nmCliente");
+        String cpf = request.getParameter("anCpf");
+        String datanasc = request.getParameter("dtNascimento");
 
         Date date = Date.valueOf(datanasc);
 
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("endereco");
-        String telefone = request.getParameter("telefone");
-        String sexo = request.getParameter("sexo");
+        String email = request.getParameter("anEmail");
+        String endereco = request.getParameter("anLogradouro");
+        String telefone = request.getParameter("anTelefone");
+        String sexo = request.getParameter("dmSexo");
 
         Cliente cliente = new Cliente(id, nome, cpf, date, email, endereco, telefone, sexo);
         boolean ok = ClienteDAO.atualizar(cliente);
-        Redirect.sendRedirect(ok, response);
+        response.setStatus(ok ? 200 : 500);
 
     }
 
