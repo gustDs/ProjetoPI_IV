@@ -40,6 +40,7 @@ $(document).ready(function () {
     };
 
     $('#table').DataTable(p_grd_json_datatable);
+    
 
     /* CLICK TABLE*/
     $("#table tbody tr").on("click", function () {

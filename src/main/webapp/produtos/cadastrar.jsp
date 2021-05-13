@@ -55,7 +55,5 @@
             </form> 
         </c:if>
 
-
-        <c:import url="../footer.jsp"/>
     </body>
 </html>

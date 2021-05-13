@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Produtos {
-    
+
     private int id;
     private String filial;
     private String nome;
@@ -32,10 +32,8 @@ public class Produtos {
 
     @Override
     public String toString() {
-        return String.format("ID: %s <br/> Filial: %s <br/> Nome: %s <br/> Categoria: %s <br/> Modelo: %s <br/> Preço: %s <br/> Quantidade: %s <br/>", id, filial, nome, categoria, modelo, preco, quantidade);
+        //return String.format("ID: %s <br/> Filial: %s <br/> Nome: %s <br/> Categoria: %s <br/> Modelo: %s <br/> Preco: %s <br/> Quantidade: %s <br/>", id, filial, nome, categoria, modelo, preco, quantidade);
+        return String.format("{\"id\": %s, \"dmFilial\": \"%s\", \"nmProduto\": \"%s\" , \"dmCategoria\": \"%s\" , \"nmModelo\": \"%s\" , \"vlProduto\": \"%s\" , \"qtProduto\": \"%s\"}", id, filial, nome, categoria, modelo, preco, quantidade);
     }
-    
-    
-    
-    
+
 }
