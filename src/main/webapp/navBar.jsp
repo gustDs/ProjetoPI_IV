@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="ClientesVendasServlet">Vendas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="RelatorioServlet">Relatório</a>
+                    </li>
                 </ul>
             </div>
         </nav>

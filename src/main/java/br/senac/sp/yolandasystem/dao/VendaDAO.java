@@ -49,10 +49,10 @@ public class VendaDAO {
     }
 
     //READ CLIENTES
-    public static List<Cliente> getClientes() {
-        List<Cliente> clientes = new ArrayList<>();
-
-        String query = "select * from cliente";
+    //LISTAR PRODUTOS
+    public static List<Venda> getVenda() {
+        List<Venda> venda = new ArrayList<>();
+        String query = "select id, cnVenda, idProduto, qtProduto, vlProduto, vlTotal from vendasitens";
         Connection con;
         try {
             con = Conexao.getConexao();
@@ -60,21 +60,19 @@ public class VendaDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                String cpf = rs.getString("cpf");
-                Date datanasc = rs.getDate("datanasc");
-                String email = rs.getString("email");
-                String endereco = rs.getString("endereco");
-                String telefone = rs.getString("telefone");
-                String sexo = rs.getString("sexo");
-                Cliente cliente = new Cliente(id, nome, cpf, datanasc, email, endereco, telefone, sexo);
-                clientes.add(cliente);
-
+                String cnVenda = rs.getString("cnVenda");
+                String idProduto = rs.getString("idProduto");
+                String qtProduto = rs.getString("qtProduto");
+                String vlProduto = rs.getString("vlProduto");
+                String vlTotal = rs.getString("vlTotal");
+                Venda vendas = new Venda(id, cnVenda, idProduto, qtProduto, vlProduto, vlTotal);
+                venda.add(vendas);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return clientes;
+        return venda;
+
     }
 
     //PEGA O CLIENTE JÁ CADASTRADO E JOGA EM OUTRA TELA PARA PODER ATUALIZÁ-LO

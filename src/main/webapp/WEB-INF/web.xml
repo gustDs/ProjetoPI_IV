@@ -44,6 +44,10 @@
         <servlet-name>ClientesVendasServlet</servlet-name>
         <servlet-class>br.senac.sp.yolandasystem.servlet.ClientesProdutosVendasServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <servlet-class>br.senac.sp.yolandasystem.servlet.RelatorioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClientesServlet</servlet-name>
         <url-pattern>/ClientesServlet</url-pattern>
@@ -83,6 +87,10 @@
     <servlet-mapping>
         <servlet-name>ClientesVendasServlet</servlet-name>
         <url-pattern>/ClientesVendasServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioServlet</servlet-name>
+        <url-pattern>/RelatorioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
