@@ -50,9 +50,27 @@ public class VendaDAO {
 
     //READ CLIENTES
     //LISTAR PRODUTOS
-    public static List<Venda> getVenda() {
+    public static List<Venda> getVenda(String pcnVenda) {
         List<Venda> venda = new ArrayList<>();
-        String query = "select id, cnVenda, idProduto, qtProduto, vlProduto, vlTotal from vendasitens";
+        String query = "SELECT\n"
+                + "    x.id,\n"
+                + "    x.cnVenda,\n"
+                + "    idProduto,\n"
+                + "    qtProduto,\n"
+                + "    vlProduto,\n"
+                + "    vlTotal,\n"
+                + "    y.cnFilial,\n"
+                + "    j.nome,\n"
+                + "    x.dtIncSys\n"
+                + "FROM\n"
+                + "    vendasitens x\n"
+                + "    LEFT JOIN produtos j ON (j.id = x.idProduto)\n"
+                + "    LEFT JOIN vendas y ON (y.id = x.cnVenda)";
+
+        if (!pcnVenda.equals("")) {
+            /* cnVenda = */
+            query += " WHERE cnVenda = " + pcnVenda + "";
+        }
         Connection con;
         try {
             con = Conexao.getConexao();
@@ -65,7 +83,10 @@ public class VendaDAO {
                 String qtProduto = rs.getString("qtProduto");
                 String vlProduto = rs.getString("vlProduto");
                 String vlTotal = rs.getString("vlTotal");
-                Venda vendas = new Venda(id, cnVenda, idProduto, qtProduto, vlProduto, vlTotal);
+                String nmVenda = rs.getString("nome");
+                String cnFilial = rs.getString("cnFilial");
+                String dtVenda = rs.getString("dtIncSys");
+                Venda vendas = new Venda(id, cnVenda, idProduto, qtProduto, vlProduto, vlTotal, nmVenda, dtVenda, cnFilial);
                 venda.add(vendas);
             }
         } catch (SQLException ex) {

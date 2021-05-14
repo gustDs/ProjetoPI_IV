@@ -23,6 +23,6 @@
 
     </head>
     <body>
-        <img width="200px" name="cc-cli" class="m-2" src="http://kennen.com.br/site/images/footer_kennen.png">
+        <img width="200px" name="cc-cli" class="m-2" src="logo.png">
     </body>
 </html>

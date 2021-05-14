@@ -15,23 +15,54 @@
     <body class="">
         <c:import url="header.jsp"/>
         <c:import url="navBar.jsp"/>
-        <h1>Clientes:</h1>
+        <script type="text/javascript" src="relatorio.js"></script>
 
-        <table id="table" class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>ID do Produto</th>
-                    <th>Quantidade</th>
-                    <th>Valor do Produto</th>
-                    <th>Valor Total</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-  
-            </tbody>   
-        </table>
+        <div class="mt-4 border p-4" style="width:100%;float:left;margin-left:5px;margin-right:5px" >
+            <h4>Relatorio de Vendas</h4>
+            <div class="cc-row text-center">
+                <div class="cc-col col-2">
+                    <label class="form-label">Venda</label>
+                    <input type ="text" name="cnVenda"  class="form-control"/>
+                </div>
+                <div class="cc-col col-2">
+                    <label class="form-label">Filial</label>
+                    <input type ="text" name="cnFilial"   class="form-control"/>
+                </div>
+                <div class="cc-col col-2">
+                    <label class="form-label">Data Inicial</label>
+                    <input type ="date" name="dtInicial"   class="form-control"/>
+                </div>
+                <div class="cc-col col-2">
+                    <label class="form-label">Data Final</label>
+                    <input type ="date" name="dtFinal"   class="form-control"/>
+                </div>
+
+
+                <div class="cc-row w-100 mt-3">
+                    <div class="cc-col col-12 ">
+                        <button  data-btn-relatorio='1' class="w-100 cc-btn  cc-btn-azul"><i class="fas fa-print" aria-hidden="true">  GERAR RELATORIO</i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 border p-4" style="width:100%;float:left;margin-left:5px;margin-right:5px" >
+                <table name='data-relatorio' class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center">Código da Venda</th>
+                            <th class="text-center">Filial</th>
+                            <th class="text-center">Data da Venda</th>
+                            <th class="text-center">Código de Produto</th>
+                            <th class="text-center">Nome do Produto</th>
+                            <th class="text-center">Quantidade do Produto</th>
+                            <th class="text-center">Valor Unitario</th>
+                            <th class="text-center">Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>   
+                </table>
+            </div>
     </body>
 </html>

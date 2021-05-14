@@ -29,6 +29,7 @@ public class RelatorioServlet extends HttpServlet {
         //CHAMA A LISTA DE VENDAS E JOGA NA TELA DE RELATÓRIOS (JSP)
         //List<Venda> listaVendas = VendaDAO.getVenda();
         //request.setAttribute("listaVendas", listaVendas);
+        
         request.getRequestDispatcher("/relatorio.jsp").forward(request, response);
 
     }

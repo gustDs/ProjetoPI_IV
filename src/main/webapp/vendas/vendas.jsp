@@ -15,26 +15,7 @@
         <script type="text/javascript" src="vendas/vendas.js"></script>
     </head>
     <body class="">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class=" navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ClientesServlet">Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ProdutosServlet">Lista Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="produtos/cadastrar.jsp">Cadastrar Produto</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-
+        <c:import url="../navBar.jsp"/>
         <div class="cc-row m-auto m-4 p-4 border">
             <div class="cc-col w-100">
                 <div class="mt-4 border p-4" style="width:35%;float:left;margin-left:5px;margin-right:5px">
