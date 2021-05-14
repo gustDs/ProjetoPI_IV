@@ -4,12 +4,24 @@ import br.senac.sp.yolandasystem.dao.ClienteDAO;
 import br.senac.sp.yolandasystem.entidade.Cliente;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CadastrarClienteServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //PASSO 1 - RECUPERAR OS PARÂMETROS
+        //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
+        List<Cliente> listaClientes = ClienteDAO.getClientes();
+
+        request.setAttribute("cliente", listaClientes);
+        response.getWriter().write(listaClientes.toString());
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

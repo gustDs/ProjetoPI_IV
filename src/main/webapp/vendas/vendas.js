@@ -6,6 +6,7 @@
 $(document).ready(function () {
     /* DATA TABLES*/
     var p_grd_json_datatable = {
+        "pageLength": 5,
         "aaSorting": [],
         "orderCellsTop": true,
         "fixedHeader": true,
@@ -69,7 +70,7 @@ $(document).ready(function () {
         fGetProduto($(this).attr("data-id"))
     });
 
-    $("#tableCarrinho tr").on("click", function () {
+    $("#tableCarrinho tbody tr").on("click", function () {
         alertify.confirm('ALERT', 'Deseja Excluir Esse Item do Carrinho', function () {
             alertify.success('Sim')
         }
@@ -79,7 +80,24 @@ $(document).ready(function () {
     });
 
     $("[data-btn-close-card='1']").on("click", function () {
-        alert("FECHAR CARRINHO")
+        console.log($("[name='cbCliente']").val())
+        if ($("[name='cbCliente']").val() == "0") {
+            alertify.set("notifier", "position", "top-right");
+            alertify.error("<p style='color:white;font-size:16px;'>É necessário informar um cliente antes de fechar o Carrinho!", "danger", 15);
+            $("[name='cbCliente']").addClass("border border-danger");
+            $("[name='cbCliente']").siblings('label').addClass("text-danger");
+            $("[name='cbCliente']").focus();
+            return false;
+        } else {
+            /* REMOVE */
+            $("[name='cbCliente']").removeClass("border border-danger");
+            $("[name='cbCliente']").siblings('label').removeClass("text-danger");
+            wCarrinho.forEach(element => {
+                console.log(element)
+            });
+            alert("FECHAR CARRINHO")
+        }
+
     })
 
 
@@ -117,9 +135,7 @@ $(document).ready(function () {
             $(document).off("blur", "[name='qtProduto']");
             $(document).on("blur", "[name='qtProduto']", function (e) {
                 var wQtdSeparada = $(this).val()
-                console.log("wQtdSeparada " + wQtdSeparada)
-                console.log("wEstoqueMax " + wEstoqueMax)
-                console.log(wQtdSeparada > wEstoqueMax)
+
                 if (parseInt(wQtdSeparada) > parseInt(wEstoqueMax)) {
                     alertify.set("notifier", "position", "top-right");
                     alertify.error("<p style='color:white;font-size:16px;'>Quantidade adicionada no carrinho não pode ser superior a quantidade <br> Disponivel em Estoque !", "danger", 15);
@@ -140,6 +156,31 @@ $(document).ready(function () {
             console.log(err)
         });
     }
-})
-        ;
 
+
+    wURICbCliente = "clientes/CadastrarClienteServlet"
+    $.ajax({
+        type: "get",
+        url: wURICbCliente,
+    }).then((res, textStatus, jqXHR) => {
+
+        var wStatus = jqXHR.status
+        if (wStatus == 200) {
+
+            var wOptions = ""
+            var wResponse = JSON.parse(res)
+            console.log(wResponse)
+            wResponse.forEach(element => {
+                wOptions += "<option value='" + element.id + "'>" + element.nmCliente + "</option>"
+            });
+            $("[name='cbCliente']").append(wOptions)
+        }
+    }).catch((err) => {
+        alertify.set("notifier", "position", "top-right");
+        alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[004]</p>", "danger", 10);
+        console.log(err)
+
+    });
+
+
+});

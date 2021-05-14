@@ -114,7 +114,7 @@
                     </div>
                 </div>
 
-                <div class="mt-4 border p-4" style="width:32%;float:left;margin-left:5px;margin-right:5px">
+                <div class="mt-4 border p-4" style="width:33%;float:left;margin-left:5px;margin-right:5px">
                     <div class="table-responsive border">
                         <h4>Carrinho</h4>
                         <table id="tableCarrinho" class="table">
@@ -128,51 +128,30 @@
                             <tbody class="text-center ">
                             </tbody>
                         </table>
-                        <div class="m-3 p-2 border">
+                        <div class="cc-row p-2 mt-4">
+
+                            <div class="cc-col col-12">
+                                <label class="form-label">Clientes</label>
+                                <select id="cbCliente" name='cbCliente' class="form-control">
+                                    <option value='0'>Selecione</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class=" p-2 border">
                             <button data-btn-close-card="1"  class="w-100 cc-btn  cc-btn-verde"><i class="fas fa-cart-arrow-down"></i>  FECHAR CARRINHO</i></button>
                         </div>
+                        <div class="cc-row p-2 mt-4">
+                            <div class="cc-col col-2">
+                                <label class="form-label">Codigo</label>
+                                <input type ="text" name="cnVenda" disabled name="cnVenda" class="form-control"/>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-
-
-
-                <div class="mt-4 border p-4 d-none" style="width:35%;float:left;margin-left:5px;margin-right:5px">
-                    <div class="table-responsive border">
-                        <h4>Clientes</h4>
-                        <table id="tableCliente" class="table">
-                            <thead  class="text-center " style="background: #3b3b3b; color:#fff;">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                    <th>CPF</th>
-                                    <th>Data de Nascimento</th>
-                                    <th>E-mail</th>
-                                    <th>Endereço</th>
-                                    <th>Telefone</th>
-                                    <th>Sexo</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center ">
-                                <c:forEach items="${listaClientes}" var="cliente">
-                                    <tr>
-                                        <td>${cliente.id}</td>
-                                        <td>${cliente.nome}</td>
-                                        <td>${cliente.cpf}</td>
-                                        <td>${cliente.datanasc}</td>
-                                        <td>${cliente.email}</td>
-                                        <td>${cliente.endereco}</td>
-                                        <td>${cliente.telefone}</td>
-                                        <td>${cliente.sexo}</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
             </div>
         </div>
-
-
-    </body>
+    </div>
+</body>
 </html>

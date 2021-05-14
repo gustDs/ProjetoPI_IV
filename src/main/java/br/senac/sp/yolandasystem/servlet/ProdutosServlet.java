@@ -30,4 +30,16 @@ public class ProdutosServlet extends HttpServlet {
         request.getRequestDispatcher("/listaProdutos.jsp").forward(request, response);
 
     }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
+        List<Produtos> listaProdutos = ProdutosDAO.getProdutos();
+        request.setAttribute("listaProdutos", listaProdutos);
+        //request.setAttribute("cliente", cliente);
+        response.getWriter().write(listaProdutos.toString());
+        //request.getRequestDispatcher("/listaProdutos.jsp").forward(request, response);
+
+    }
 }
