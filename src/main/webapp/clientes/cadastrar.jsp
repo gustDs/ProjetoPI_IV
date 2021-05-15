@@ -55,7 +55,7 @@
                     <div class="mt-4 border p-4" style="width:60%;float:left;margin-left:5px;margin-right:5px" >
 
                         <div class="cc-row">
-                            <div class="cc-col col-2">
+                           <div class="cc-col col-2">
                                 <label class="form-label">Codigo</label>
                                 <input type ="text" id="idCliente" disabled name="idCliente" class="form-control"/>
                             </div>
