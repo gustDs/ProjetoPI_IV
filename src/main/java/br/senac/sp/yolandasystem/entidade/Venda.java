@@ -30,6 +30,7 @@ public class Venda {
         this.dataVenda = dataVenda;
         this.cnFilial = cnFilial;
     }
+   
 
     public boolean validarID() {
         return true;

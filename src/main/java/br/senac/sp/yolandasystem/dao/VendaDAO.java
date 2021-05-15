@@ -8,6 +8,7 @@ package br.senac.sp.yolandasystem.dao;
 import br.senac.sp.yolandasystem.conexao.Conexao;
 import br.senac.sp.yolandasystem.entidade.Venda;
 import br.senac.sp.yolandasystem.entidade.Cliente;
+import br.senac.sp.yolandasystem.entidade.Venda2;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class VendaDAO {
 
     /*CLASSE DE QUERYS DA TABELA DE PRODUTOS*/
     //CREATE CLIENTES
-    public static boolean cadastrar(Venda itens) {
+    public static boolean cadastrarItensVenda(Venda2 itens) {
         boolean ok = true;
         String query = "insert into vendasitens (cnVenda, idProduto, qtProduto,vlProduto, vlTotal) values (?, ?, ?, ?, ?)";
 
@@ -40,10 +41,46 @@ public class VendaDAO {
             ps.setString(4, itens.getValor());
             ps.setString(5, itens.getValorTotal());
             ps.executeUpdate();
+            PreparedStatement wSql2 = con.prepareStatement("UPDATE yolanda3.produtos SET `quantidade` =quantidade-" + itens.getQuantidade() + " WHERE  `id`=" + itens.getProduto() + ";");
+            wSql2.execute();
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+        }
+
+    }
+
+    public static String cadastrarVenda(String pCliente, String pFilial) {
+
+        boolean ok = true;
+        String query = "INSERT INTO vendas (idCliente,cnFilial) VALUES (?,?);";
+        String wVenda = "";
+        Connection con;
+        System.out.println("query 1");
+        System.out.println(query);
+        try {
+            //con = Conexao.getConexao();
+            //PreparedStatement wSql = con.prepareStatement(query);
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, pCliente);
+            ps.setString(2, pFilial);
+            ps.executeUpdate();
+
+            PreparedStatement wSql2 = con.prepareStatement("SELECT MAX(id) as cnVenda FROM vendas");
+
+            System.out.println("query 2");
+            System.out.println(wSql2);
+            ResultSet wResult = wSql2.executeQuery();
+            while (wResult.next()) {
+                wVenda = wResult.getString("cnVenda");
+            }
+
+            return wVenda;
+        } catch (SQLException ex) {
+            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return "0";
         }
 
     }

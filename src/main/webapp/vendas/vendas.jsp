@@ -117,6 +117,16 @@
                                     <option value='0'>Selecione</option>
                                 </select>
                             </div>
+                            <div class="cc-col col-12">
+                                <label class="form-label">FILIAL</label>
+                                <select id="cbFilial" name='cbFilial' class="form-control">
+                                    <option value="0">Selecione uma Filial</option>
+                                    <option value="Campina Grande">Campina Grande</option>
+                                    <option value="Sao Paulo">São Paulo</option>
+                                    <option value="Joinville">Joinville</option>
+                                    <option value="Brasilia">Brasilia</option>
+                                </select>
+                            </div>
                         </div>
                         <hr>
                         <div class=" p-2 border">

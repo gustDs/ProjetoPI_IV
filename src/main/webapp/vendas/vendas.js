@@ -6,7 +6,7 @@
 $(document).ready(function () {
     /* DATA TABLES*/
     var p_grd_json_datatable = {
-        "pageLength": 5,
+        "pageLength": 100000,
         "aaSorting": [],
         "orderCellsTop": true,
         "fixedHeader": true,
@@ -58,7 +58,7 @@ $(document).ready(function () {
                 .draw();
     });
 
-    $('#tableCarrinho').DataTable(p_grd_json_datatable);
+    
     window.wCarrinho = []
     /* CLICK TABLE*/
     $("#tableProdutos tbody tr").on("click", function () {
@@ -67,8 +67,12 @@ $(document).ready(function () {
         $("[name='qtProduto']").removeClass("border border-danger");
         $("[name='qtProduto']").siblings('label').removeClass("text-danger");
         $("[name='qtProduto']").val("")
+        console.log($(this))
+        console.log($(this).attr("data-id"))
         fGetProduto($(this).attr("data-id"))
     });
+    
+    $('#tableCarrinho').DataTable(p_grd_json_datatable);
 
     $("#tableCarrinho tbody tr").on("click", function () {
         alertify.confirm('ALERT', 'Deseja Excluir Esse Item do Carrinho', function () {
@@ -88,20 +92,73 @@ $(document).ready(function () {
             $("[name='cbCliente']").siblings('label').addClass("text-danger");
             $("[name='cbCliente']").focus();
             return false;
+        } else if ($("[name='cbFilial']").val() == "0") {
+            alertify.set("notifier", "position", "top-right");
+            alertify.error("<p style='color:white;font-size:16px;'>É necessário informar uma Filial antes de fechar o Carrinho!", "danger", 15);
+            $("[name='cbFilial']").addClass("border border-danger");
+            $("[name='cbFilial']").siblings('label').addClass("text-danger");
+            $("[name='cbFilial']").focus();
+            return false;
         } else {
             /* REMOVE */
             $("[name='cbCliente']").removeClass("border border-danger");
             $("[name='cbCliente']").siblings('label').removeClass("text-danger");
+            $("[name='cbFilial']").removeClass("border border-danger");
+            $("[name='cbFilial']").siblings('label').removeClass("text-danger");
+
+            var wJsn = "{"
+            wJsn += "   \"cnCliente\" : \"" + $("[name='cbCliente']").val() + "\","
+            wJsn += "   \"cnFilial\" : \"" + $("[name='cbFilial']").val() + "\","
+            wJsn += "   \"data\" :"
+            wJsn += "   ["
             wCarrinho.forEach(element => {
-                console.log(element)
+                wJsn += "     {"
+                wJsn += "        \"produto\" : \"" + element.produto + "\","
+                wJsn += "        \"quantidade\" : \"" + element.quantidade + "\","
+                wJsn += "        \"valor\" : \"" + element.valor + "\","
+                wJsn += "        \"valorTotal\" : \"" + element.valorTotal + "\""
+                wJsn += "     },"
             });
-            alert("FECHAR CARRINHO")
+            wJsn = wJsn.substr(0, wJsn.length - 1) + "";
+            wJsn += "  ]";
+            wJsn += "   }";
+
+            console.log("WJSON")
+            console.log(wJsn)
+
+            /* URI DA API NODE */
+            var wRest = "VendasServlet"
+
+            /* AJAX  */
+            $.ajax({
+                type: "post",
+                url: wRest,
+                data: wJsn
+            }).then((res, textStatus, jqXHR) => {
+                var wStatus = jqXHR.status
+                if (wStatus == 200) {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.notify("<p style='color:white;font-size:16px;'>Carrinho fechado com sucesso</p>", "success", 10);
+                    setTimeout(function () {
+                        document.location.reload(true);
+                    }, 1500);
+                }
+
+
+            }).catch((err) => {
+                alert("erro")
+                console.log("err")
+                console.log(err)
+
+            });
+
         }
 
     })
 
 
     $("[data-btn-add-card='1']").on("click", function () {
+        $("[name='qtProduto']").blur();
         /* VERIFICA SE O CARRINHO JA FOI ABERTO*/
         var wCodigo = $("[name='idProduto']").val()
         var wNome = $("[name='nmProduto']").val()
@@ -110,7 +167,7 @@ $(document).ready(function () {
 
         var wValorTotal = wValorUnitario * wQuantidade
 
-        wCarrinho.push({"codigo": wCodigo, "valorUnitario": wValorUnitario, "quantidade": wQuantidade, "valorTotal": wValorTotal})
+        wCarrinho.push({"produto": wCodigo, "valor": wValorUnitario, "quantidade": wQuantidade, "valorTotal": wValorTotal})
 
         $('#tableCarrinho').DataTable().row.add([
             wCodigo,
@@ -135,6 +192,18 @@ $(document).ready(function () {
             $(document).off("blur", "[name='qtProduto']");
             $(document).on("blur", "[name='qtProduto']", function (e) {
                 var wQtdSeparada = $(this).val()
+
+                if (parseInt(wQtdSeparada) <= 0) {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.error("<p style='color:white;font-size:16px;'>Quantidade adicionada no carrinho não pode ser menor ou igual a 0 !", "danger", 15);
+                    /* INSERT */
+                    $(this).addClass("border border-danger");
+                    $(this).siblings('label').addClass("text-danger");
+                    $("[data-btn-add-card='1']").prop('disabled', true);
+                    return;
+                }
+
+
 
                 if (parseInt(wQtdSeparada) > parseInt(wEstoqueMax)) {
                     alertify.set("notifier", "position", "top-right");

@@ -3,6 +3,7 @@ package br.senac.sp.yolandasystem.servlet;
 import br.senac.sp.yolandasystem.dao.ClienteDAO;
 import br.senac.sp.yolandasystem.entidade.Cliente;
 import br.senac.sp.yolandasystem.utils.Redirect;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -10,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 public class AlterarClienteServlet extends HttpServlet {
 
@@ -34,6 +36,9 @@ public class AlterarClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+
+
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
 
