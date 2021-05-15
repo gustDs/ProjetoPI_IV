@@ -87,7 +87,7 @@ public class VendaDAO {
 
     //READ CLIENTES
     //LISTAR PRODUTOS
-    public static List<Venda> getVenda(String pcnVenda) {
+    public static List<Venda> getVenda(String pcnVenda, String pcnFilial, String dtInicio, String dtFim) {
         List<Venda> venda = new ArrayList<>();
         String query = "SELECT\n"
                 + "    x.id,\n"
@@ -98,15 +98,28 @@ public class VendaDAO {
                 + "    vlTotal,\n"
                 + "    y.cnFilial,\n"
                 + "    j.nome,\n"
-                + "    x.dtIncSys\n"
+                + "    DATE_FORMAT(x.dtIncSys, '%d/%m/%Y') AS dtIncSys\n"
                 + "FROM\n"
                 + "    vendasitens x\n"
                 + "    LEFT JOIN produtos j ON (j.id = x.idProduto)\n"
-                + "    LEFT JOIN vendas y ON (y.id = x.cnVenda)";
+                + "    LEFT JOIN vendas y ON (y.id = x.cnVenda)"
+                + "    LEFT JOIN cliente z ON (z.id = y.idCliente) WHERE 0 = 0";
 
         if (!pcnVenda.equals("")) {
             /* cnVenda = */
-            query += " WHERE cnVenda = " + pcnVenda + "";
+            query += " AND cnVenda = '" + pcnVenda + "'";
+        }
+        if (!pcnFilial.equals("")) {
+            /* cnFilial = */
+            query += " AND cnFilial = '" + pcnFilial + "'";
+        }
+        if (!dtInicio.equals("")) {
+            /* dtIncSys inicio = */
+            query += " AND DATE_FORMAT(x.dtIncSys, '%Y-%m-%d') >='" + dtInicio + "'";
+        }
+        if (!dtFim.equals("")) {
+            /* dtIncSys fim = */
+            query += " AND DATE_FORMAT(x.dtIncSys, '%Y-%m-%d') <='" + dtFim + "'";
         }
         Connection con;
         try {

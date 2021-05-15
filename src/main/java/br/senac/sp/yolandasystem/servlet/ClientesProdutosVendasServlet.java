@@ -45,7 +45,10 @@ public class ClientesProdutosVendasServlet extends HttpServlet {
             throws ServletException, IOException {
         //PASSO 1 - RECUPERAR OS PARÂMETROS
         String cnVenda = request.getParameter("cnVenda");
-        List<Venda> listaVendas = VendaDAO.getVenda(cnVenda);
+        String cnFilial = request.getParameter("cnFilial");
+        String dtVenda = request.getParameter("dtInicial");
+        String dtFim = request.getParameter("dtFinal");
+        List<Venda> listaVendas = VendaDAO.getVenda(cnVenda, cnFilial, dtVenda, dtFim);
         request.setAttribute("listaVendas", listaVendas);
         response.getWriter().write(listaVendas.toString());
     }
