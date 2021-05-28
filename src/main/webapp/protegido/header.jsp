@@ -4,6 +4,7 @@
     Author     : Martins
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,5 +25,9 @@
     </head>
     <body>
         <img width="200px" name="cc-cli" class="m-2" src="logo.png">
+    <c:if test="${not empty sessionScope.usuario}">
+        <p>Usuário Logado: ${sessionScope.usuario.nome}</p>
+        <a href="<c:url value="/LogoutServlet"/>">Sair</a>
+    </c:if>
     </body>
 </html>

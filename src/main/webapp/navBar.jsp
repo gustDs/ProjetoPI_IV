@@ -29,12 +29,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="produtos/cadastrar.jsp"><i class="fas fa-plus"></i> Cadastrar Produto</a>
                     </li>
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="ClientesVendasServlet"><i class="fas fa-hand-holding-usd"></i> Vendas</a>
                     </li>
                     <li class="nav-item">
+                        <c:if 
+                            test="${sessionScope.usuario.isGerente()}">
+                        </c:if>
                         <a class="nav-link" href="RelatorioServlet"><i class="fas fa-file-alt"></i> Relatório</a>
                     </li>
                 </ul>
