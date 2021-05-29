@@ -14,38 +14,45 @@ public class CadastrarProdutosServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //PASSO 1 - RECUPERAR OS PARAMETROS
-        
         String filial = request.getParameter("filial");
         String nome = request.getParameter("nome");
         String categoria = request.getParameter("categoria");
         String modelo = request.getParameter("modelo");
-        
+
         String precostr = request.getParameter("preco");
         Double preco = Double.valueOf(precostr);
-        
+
         String qtdstr = request.getParameter("quantidade");
         Integer quantidade = Integer.valueOf(qtdstr);
-        
+
         //PASSO 2 - INSERIR O CLIENTE NO BD
-        
         Produtos produtos = new Produtos(0, filial, nome, categoria, modelo, preco, quantidade);
         boolean ok = ProdutosDAO.cadastrar(produtos);
-        
+
         //PASSO 3 - REDIRECIONAR PARA TELA DE SUCESSO/ERRO
-        
         if (ok) {
-            response.sendRedirect(request.getContextPath()+ "/sucesso.jsp");
+            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
         } else {
             String msg = "Não foi possível cadastrar o cliente!";
             request.setAttribute("msgErro", msg);
             request.getRequestDispatcher("/erro.jsp").forward(request, response);
         }
-        
-        
-        
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String idstr = request.getParameter("id");
+        Integer id = Integer.valueOf(idstr);
+
+        Produtos produto = ProdutosDAO.getProduto(id);
+        request.setAttribute("produto", produto);
+        //response.getWriter().write(produto.toString());
+        request.getRequestDispatcher("/produtos/cadastrar.jsp").forward(request, response);
     }
 
 }

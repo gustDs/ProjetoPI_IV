@@ -28,10 +28,7 @@ public class ClientesProdutosVendasServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
-        List<Cliente> listaClientes = ClienteDAO.getClientes();
-        request.setAttribute("listaClientes", listaClientes);
-        request.getRequestDispatcher("vendas/vendas.jsp");
+
 
         //CHAMA A LISTA DE PRODUTOS E JOGA NA TELA (JSP)
         List<Produtos> listaProdutos = ProdutosDAO.getProdutos();

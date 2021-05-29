@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- JavaScript -->
         <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-        <script src="lib/jquery-3.6.0.min.js" type="text/javascript"></script>
+        <script src="../lib/jquery-3.6.0.min.js" type="text/javascript"></script>
 
         <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" >
         <link href="/ProjetoPI3/yolanda.css" rel="stylesheet" >
@@ -24,10 +24,8 @@
 
     </head>
     <body>
-        <img width="200px" name="cc-cli" class="m-2" src="logo.png">
-    <c:if test="${not empty sessionScope.usuario}">
-        <p>Usuário Logado: ${sessionScope.usuario.nome}</p>
-        <a href="<c:url value="/LogoutServlet"/>">Sair</a>
-    </c:if>
+
+        <img width="200px" style="height: 120px;" name="cc-cli"  src="../logo.png">
+
     </body>
 </html>

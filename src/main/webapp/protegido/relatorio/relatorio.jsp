@@ -13,8 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body class="">
-        <c:import url="header.jsp"/>
-        <c:import url="navBar.jsp"/>
+        <c:import url="../header.jsp"/>
+        <c:import url="../navBar.jsp"/>
         <script type="text/javascript" src="relatorio.js"></script>
 
         <div class="mt-4 border p-4" style="width:100%;float:left;margin-left:5px;margin-right:5px" >

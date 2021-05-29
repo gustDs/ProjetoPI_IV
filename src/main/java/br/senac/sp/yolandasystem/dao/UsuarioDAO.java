@@ -23,9 +23,9 @@ public class UsuarioDAO {
             if (rs.next()) {
                 usuario = new Usuario();
                 usuario.setLogin(login);
-                usuario.setFilial("filial");
-                usuario.setNome("nome");
-                usuario.setPerfil("perfil");
+                usuario.setFilial(rs.getString("filial"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setPerfil(rs.getString("perfil"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

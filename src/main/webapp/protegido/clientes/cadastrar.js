@@ -75,7 +75,7 @@ $(document).ready(function () {
     }
     /* BUSCA CLIENTE PARA EDICAO */
     function fEditarCliente(pId) {
-        $.ajax("AlterarClienteServlet?id=" + pId).then((result) => {
+        $.ajax("../AlterarClienteServlet?id=" + pId).then((result) => {
             var wResult = JSON.parse(result);
             console.log(wResult)
             $("[name='idCliente']").val(wResult["id"])
@@ -122,7 +122,7 @@ $(document).ready(function () {
             wData += "dmSexo=" + wSexo + "";
             wData = encodeURI(wData)
 
-            wURI = "clientes/CadastrarClienteServlet"
+            wURI = "../clientes/CadastrarClienteServlet"
 
 
             $.ajax({
@@ -161,7 +161,7 @@ $(document).ready(function () {
             wData += "dmSexo=" + wSexo + "";
             wData = encodeURI(wData)
 
-            wURI = "AlterarClienteServlet"
+            wURI = "../AlterarClienteServlet"
 
 
 
@@ -196,7 +196,7 @@ $(document).ready(function () {
         var wId = $("#idCliente").val();
         console.log(fDeletarCliente)
 
-        $.ajax("ExcluirClienteServlet?id=" + wId).then((result) => {
+        $.ajax("../ExcluirClienteServlet?id=" + wId).then((result) => {
             console.log(result)
             alertify.set("notifier", "position", "top-right");
             alertify.notify("<p style='color:white;font-size:16px;'>Cliente Excluido com Sucesso</p>", "success", 10);

@@ -13,10 +13,11 @@
         <title>JSP Page</title>
     </head>
     <body class="">
-        <c:import url="/protegido/header.jsp"/>
+        <c:import url="header.jsp"/>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <c:import url="../navBar.jsp"/>
+        <c:import url="navBar.jsp"/>
         <script type="text/javascript" src="index.js"></script>
+
         <div class="cc-row p-4">
             <canvas class='cc-col-36'id="myChart" ></canvas>
         </div>

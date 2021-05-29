@@ -30,7 +30,7 @@ public class RelatorioServlet extends HttpServlet {
         //List<Venda> listaVendas = VendaDAO.getVenda();
         //request.setAttribute("listaVendas", listaVendas);
         
-        request.getRequestDispatcher("/relatorio.jsp").forward(request, response);
+        request.getRequestDispatcher("relatorio/relatorio.jsp").forward(request, response);
 
     }
 

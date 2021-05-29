@@ -28,32 +28,44 @@ public class AutorizacaoFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        
+
         //PASSO 1 - VERIFICAR SE O USUÁRIO ESTÁ LOGADO
         HttpSession session = httpServletRequest.getSession();
         if (session.getAttribute("usuario") == null) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
-            
+
         }
-        
+
         //PASSO 2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO AO MÓDULO
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         String url = httpServletRequest.getRequestURI();
-        
+
         //CHAMA A FUNÇÃO
         if (verificarAcessoNegado(url, usuario)) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
         }
 
     }
+
     //FUNÇÃO PARA RESTRINGIR O USUÁRIO DE ACESSAR MÓDULOS
     //EXEMPLO: SE A URL CONTER /protegido/gerente, E O USUÁRIO NAO FOR UM GERENTE, VAI DAR ACESSO NEGADO
     public boolean verificarAcessoNegado(String url, Usuario usuario) {
+        /*
+        System.out.println("entrouuu");
+        System.out.println("url" + url);
+        System.out.println(url.contains("/protegido/ClientesServlet"));
+        System.out.println("EXISTE ?? " + usuario.getPerfil());
+        System.out.println("usuario.isTI() " + usuario.isTI());
         boolean naoOk = false;
-        if (url.contains("/protegido/gerente") && !usuario.isGerente()) {
+        if (url.contains("/protegido/ClientesServlet") && !usuario.isTI()) {
             naoOk = true;
         }
-        return naoOk;
+        if (url.contains("/protegido/ClientesServlet") && !usuario.isTI()) {
+            naoOk = true;
+        }
+        
+        */
+        return false;
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,

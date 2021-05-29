@@ -127,7 +127,7 @@ $(document).ready(function () {
             console.log(wJsn)
 
             /* URI DA API NODE */
-            var wRest = "VendasServlet"
+            var wRest = "../VendasServlet"
 
             /* AJAX  */
             $.ajax({
@@ -180,7 +180,7 @@ $(document).ready(function () {
     });
     function fGetProduto(pId) {
 
-        $.ajax("AlterarProdutosServlet?id=" + pId).then((result) => {
+        $.ajax("../AlterarProdutosServlet?id=" + pId).then((result) => {
             var wResult = JSON.parse(result);
             var wEstoqueMax = wResult.qtProduto
             $("[name='idProduto']").val(wResult.id)
@@ -227,7 +227,7 @@ $(document).ready(function () {
     }
 
 
-    wURICbCliente = "clientes/CadastrarClienteServlet"
+    wURICbCliente = "../clientes/CadastrarClienteServlet"
     $.ajax({
         type: "get",
         url: wURICbCliente,
