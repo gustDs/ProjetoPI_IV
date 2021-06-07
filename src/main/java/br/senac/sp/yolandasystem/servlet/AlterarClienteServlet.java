@@ -25,7 +25,7 @@ public class AlterarClienteServlet extends HttpServlet {
 
         Cliente cliente = ClienteDAO.getCliente(id);
 
-        System.out.println("cliente " + cliente.getClass().getSimpleName());
+
         request.setAttribute("cliente", cliente);
         response.getWriter().write(cliente.toString());
         // request.getRequestDispatcher("/clientes/cadastrar.jsp").forward(request, response);

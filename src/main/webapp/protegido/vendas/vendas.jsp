@@ -89,7 +89,7 @@
                         </div>
                         <div class="cc-row w-100 mt-3">
                             <div class="cc-col col-12 ">
-                                <button data-btn-add-card='1' class="w-100 cc-btn  cc-btn-azul"><i class="fas fa-plus" aria-hidden="true">  ADICIONAR AO CARRINHO</i></button>
+                                <button data-btn-add-card='1' class="w-100 cc-btn  cc-btn-azul"><i class="fa fa-plus" aria-hidden="true">  ADICIONAR AO CARRINHO</i></button>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                         </div>
                         <hr>
                         <div class=" p-2 border">
-                            <button data-btn-close-card="1"  class="w-100 cc-btn  cc-btn-verde"><i class="fas fa-cart-arrow-down"></i>  FECHAR CARRINHO</i></button>
+                            <button data-btn-close-card="1"  class="w-100 cc-btn  cc-btn-verde"><i class="fa fa-cart-arrow-down"></i>  FECHAR CARRINHO</i></button>
                         </div>
                         <div class="cc-row p-2 mt-4">
                             <div class="cc-col col-2">

@@ -94,13 +94,13 @@
                             </div>
                             <div class="cc-row w-100 mt-3">
                                 <div class="cc-col col-3 ">
-                                    <button data-btn-novo="1" class="w-100 cc-btn  cc-btn-azul"><i class="fas fa-plus" aria-hidden="true">  NOVO</i></button>
+                                    <button data-btn-novo="1" class="w-100 cc-btn  cc-btn-azul"><i class="fa fa-plus" aria-hidden="true">  NOVO</i></button>
                                 </div>
                                 <div class="cc-col col-3 ">
-                                    <button data-btn-salvar="1"  class="w-100  cc-btn cc-btn-verde"><i class="fas fa-check">   SALVAR</i></button>
+                                    <button data-btn-salvar="1"  class="w-100  cc-btn cc-btn-verde"><i class="fa fa-check">   SALVAR</i></button>
                                 </div>
                                 <div class="cc-col col-1 float-right">
-                                    <button data-btn-exluir="1"  class="w-100 cc-btn cc-btn-vermelho" ><i class="fas fa-trash" aria-hidden="true"></i></button>
+                                    <button data-btn-exluir="1"  class="w-100 cc-btn cc-btn-vermelho" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                                 </div>
                             </div>
 

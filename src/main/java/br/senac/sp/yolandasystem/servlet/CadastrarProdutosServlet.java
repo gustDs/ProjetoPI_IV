@@ -30,15 +30,8 @@ public class CadastrarProdutosServlet extends HttpServlet {
         //PASSO 2 - INSERIR O CLIENTE NO BD
         Produtos produtos = new Produtos(0, filial, nome, categoria, modelo, preco, quantidade);
         boolean ok = ProdutosDAO.cadastrar(produtos);
+        response.setStatus(ok ? 200 : 500);
 
-        //PASSO 3 - REDIRECIONAR PARA TELA DE SUCESSO/ERRO
-        if (ok) {
-            response.sendRedirect(request.getContextPath() + "/sucesso.jsp");
-        } else {
-            String msg = "Não foi possível cadastrar o cliente!";
-            request.setAttribute("msgErro", msg);
-            request.getRequestDispatcher("/erro.jsp").forward(request, response);
-        }
 
     }
 

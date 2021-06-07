@@ -14,6 +14,9 @@
     </head>
     <body>
         <c:if test="${not empty sessionScope.usuario}">
+            <script>
+                window.wTeste = "${sessionScope.usuario.filial}"
+            </script>
             <div style="float: right;" class="mr-2">
                 <div name="cc-cabecalho-dir" class="mt-2">
                     Filial ${sessionScope.usuario.filial}<br>Usuario: ${sessionScope.usuario.nome} - ${sessionScope.usuario.perfil}<br></div>
@@ -24,31 +27,28 @@
             <div class=" navbar-collapse">
                 <ul class="navbar-nav ml-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">  <i class="fas fa-home"></i></a>
+                        <a class="nav-link" href="index.jsp">  <i class="fa fa-home"></i></a>
                     </li>
                     <c:if test="${sessionScope.usuario.isRetaguarda() || sessionScope.usuario.isAdministrador()}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="../ProdutosServlet"><i class="fas fa-list"></i> Lista Produtos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../produtos/cadastrar.jsp"><i class="fas fa-plus"></i> Cadastrar Produto</a>
+                            <a class="nav-link" href="ProdutosServlet"><i class="fa fa-plus"></i> Produtos</a>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.usuario.isAdministrador() || sessionScope.usuario.isTI()}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="ClientesServlet"><i class="fas fa-users"></i> Clientes</a>
+                            <a class="nav-link" href="ClientesServlet"><i class="fa fa-users"></i> Clientes</a>
                         </li>
                     </c:if>
 
                     <c:if test="${sessionScope.usuario.isVendedor() || sessionScope.usuario.isAdministrador() }"> 
                         <li class="nav-item">}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="ClientesVendasServlet"><i class="fas fa-hand-holding-usd"></i> Vendas</a>
+                            <a class="nav-link" href="ClientesVendasServlet"><i class="fa fa-hand-holding-usd"></i> Vendas</a>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.usuario.isGerente() || sessionScope.usuario.isAdministrador()}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="RelatorioServlet"><i class="fas fa-file-alt"></i> Relatório</a>
+                            <a class="nav-link" href="RelatorioServlet"><i class="fa fa-file-alt"></i> Relatório</a>
                         </li>
                     </c:if>
                 </ul>

@@ -5,7 +5,7 @@
  */
 $(document).ready(function () {
 
-    var wURI = "../ProdutosServlet"
+    var wURI = "ProdutosServlet"
     var wMLabels = []
     var wMData = []
     var wMBgColors = []

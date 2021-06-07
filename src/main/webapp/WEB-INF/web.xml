@@ -31,7 +31,7 @@
         <servlet-class>br.senac.sp.yolandasystem.servlet.AlterarClienteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProdutosServlet</servlet-name>
+        <servlet-name>protegido/ProdutosServlet</servlet-name>
         <servlet-class>br.senac.sp.yolandasystem.servlet.ProdutosServlet</servlet-class>
     </servlet>
     <servlet>
@@ -87,8 +87,8 @@
         <url-pattern>/AlterarClienteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProdutosServlet</servlet-name>
-        <url-pattern>/ProdutosServlet</url-pattern>
+        <servlet-name>protegido/ProdutosServlet</servlet-name>
+        <url-pattern>/protegido/ProdutosServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastrarProdutosServlet</servlet-name>

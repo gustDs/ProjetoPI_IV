@@ -22,9 +22,8 @@ import java.util.logging.Logger;
  * @author Martins
  */
 public class ClienteDAO {
-    
-    /*CLASSE DE QUERYS DA TABELA DE PRODUTOS*/
 
+    /*CLASSE DE QUERYS DA TABELA DE PRODUTOS*/
     //CREATE CLIENTES
     public static boolean cadastrar(Cliente cliente) {
         boolean ok = true;
@@ -77,7 +76,7 @@ public class ClienteDAO {
         }
         return clientes;
     }
-    
+
     //PEGA O CLIENTE JÁ CADASTRADO E JOGA EM OUTRA TELA PARA PODER ATUALIZÁ-LO
     public static Cliente getCliente(int id) {
         Cliente cliente = null;
@@ -89,7 +88,7 @@ public class ClienteDAO {
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
                 Date datanasc = rs.getDate("datanasc");
@@ -97,16 +96,16 @@ public class ClienteDAO {
                 String endereco = rs.getString("endereco");
                 String telefone = rs.getString("telefone");
                 String sexo = rs.getString("sexo");
-                cliente = new Cliente(id, nome, cpf, datanasc, email, endereco, telefone, sexo);
+                cliente = new Cliente(0, nome, cpf, datanasc, email, endereco, telefone, sexo);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cliente;
     }
-    
+
     //DELETE CLIENTES
-     public static boolean deletar(int id) {
+    public static boolean deletar(int id) {
         boolean ok = true;
         String query = "delete from cliente where id=?";
         Connection con;
@@ -121,9 +120,9 @@ public class ClienteDAO {
         }
         return ok;
     }
-     
-     //UPDATE CLIENTES
-     public static boolean atualizar(Cliente cliente) {
+
+    //UPDATE CLIENTES
+    public static boolean atualizar(Cliente cliente) {
         boolean ok = true;
         String query = "update cliente set nome=?, cpf=?, datanasc=?, email=?, endereco=?, telefone=?, sexo=? where id=?";
         Connection con;
@@ -138,7 +137,7 @@ public class ClienteDAO {
             ps.setString(6, cliente.getTelefone());
             ps.setString(7, cliente.getSexo());
             ps.setInt(8, cliente.getId());
-            
+
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

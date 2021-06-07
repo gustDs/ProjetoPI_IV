@@ -40,7 +40,7 @@
 
                 <div class="cc-row w-100 mt-3">
                     <div class="cc-col col-12 ">
-                        <button  data-btn-relatorio='1' class="w-100 cc-btn  cc-btn-azul"><i class="fas fa-print" aria-hidden="true">  GERAR RELATORIO</i></button>
+                        <button  data-btn-relatorio='1' class="w-100 cc-btn  cc-btn-azul"><i class="fa fa-print" aria-hidden="true">  GERAR RELATORIO</i></button>
                     </div>
                 </div>
             </div>

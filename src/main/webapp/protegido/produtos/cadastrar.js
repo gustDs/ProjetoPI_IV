@@ -7,7 +7,7 @@ $(document).ready(function () {
     /* DATA TABLES*/
     var p_grd_json_datatable = {
         "aaSorting": [],
-        "paging": true,
+        "paging": false,
         "ordering": true,
         "destroy": true,
         "deferRender": true,
@@ -38,168 +38,34 @@ $(document).ready(function () {
             }
         }
     };
-
     $('#table').DataTable(p_grd_json_datatable);
-    
-
-    /* CLICK TABLE*/
     $("#table tbody tr").on("click", function () {
         $("tr").removeClass("cc-tabela-tr-selecionada")
         fValidaSalvar(1)
         $(this).addClass("cc-tabela-tr-selecionada")
-        fEditarCliente($(this).attr("data-id"))
+        fEditarProduto($(this).attr("data-id"))
     });
     /* CLICK BTN EXCLUIR*/
     $("[data-btn-exluir='1']").on("click", function () {
-        fDeletarCliente()
+        fDeletarProduto()
     });
     /* CLICK BTN SALVAR*/
     $("[data-btn-salvar='1']").on("click", function () {
-        fSalvarCliente()
+        fSalvarProduto()
     });
     /* CLICK BTN NOVO*/
     $("[data-btn-novo='1']").on("click", function () {
-        fNovoCliente()
+        fNovoProduto()
     });
 
+    function fDeletarProduto() {
 
-    function fNovoCliente() {
-        $("[name='idCliente']").val("")
-        $("[name='nmCliente']").val("")
-        $("[name='anCpf']").val("")
-        $("[name='dtNascimento']").val("")
-        $("[name='dmSexo']").val("")
-        $("[name='anLogradouro']").val("")
-        $("[name='anEmail']").val("")
-        $("[name='anTelefone']").val("")
-    }
-    /* BUSCA CLIENTE PARA EDICAO */
-    function fEditarCliente(pId) {
-        $.ajax("../AlterarProdutosServlet?id=" + pId).then((result) => {
-            var wResult = JSON.parse(result);
-            console.log(wResult)
-            $("[name='idCliente']").val(wResult["id"])
-            $("[name='nmCliente']").val(wResult["nmCliente"])
-            $("[name='anCpf']").val(wResult["anCpf"])
-            $("[name='dtNascimento']").val(wResult["dtNascimento"])
-            $("[name='dmSexo']").val(wResult["dmSexo"])
-            $("[name='anLogradouro']").val(wResult["anLogradouro"])
-            $("[name='anEmail']").val(wResult["anEmail"])
-            $("[name='anTelefone']").val(wResult["anTelefone"])
-        }).catch((err) => {
-            console.log("ERR")
-            console.log(err)
-        });
-    }
+        var wId = $("[name='id']").val();
 
-    /* CRIA OU ALTERA CLIENTE */
-    function fSalvarCliente() {
-        /* VARIAVEIS */
-        var wId = $("[name='idCliente']").val()
-        var wNomeCliente = $("[name='nmCliente']").val()
-        var wCpf = $("[name='anCpf']").val()
-        var wNascimento = $("[name='dtNascimento']").val()
-        var wSexo = $("[name='dmSexo']").val()
-        var wLogradouro = $("[name='anLogradouro']").val()
-        var wEmail = $("[name='anEmail']").val()
-        var wTelefone = $("[name='anTelefone']").val()
-        /* SE FOR UM NOVO REGISTRO [POST]*/
-        if (wId == "") {
-            /* VALIDA CAMPOS */
-            var wValoresValidos = fValidaSalvar();
-            /* SE CAMPOS OBRIGATORIOS NAO PREENCHIDO*/
-            if (!wValoresValidos) {
-                return
-            }
-            /* JSON */
-            var wData = "";
-            wData += "nmCliente=" + wNomeCliente + "&";
-            wData += "anCpf=" + wCpf + "&";
-            wData += "dtNascimento=" + wNascimento + "&";
-            wData += "anEmail=" + wEmail + "&";
-            wData += "anLogradouro=" + wLogradouro + "&";
-            wData += "anTelefone=" + wTelefone + "&";
-            wData += "dmSexo=" + wSexo + "";
-            wData = encodeURI(wData)
-
-            wURI = "../clientes/CadastrarClienteServlet"
-
-
-            $.ajax({
-                type: "post",
-                url: wURI,
-                data: wData,
-            }).then((res, textStatus, jqXHR) => {
-                var wStatus = jqXHR.status
-                if (wStatus == 200) {
-                    alertify.set("notifier", "position", "top-right");
-                    alertify.notify("<p style='color:white;font-size:16px;'>Cliente Cadastrado com Sucesso com Sucesso</p>", "success", 10);
-                    setTimeout(function () {
-                        document.location.reload(true);
-                    }, 1500);
-                } else {
-                    alertify.set("notifier", "position", "top-right");
-                    alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[001]</p>", "danger", 10);
-                }
-            }).catch((err) => {
-                alertify.set("notifier", "position", "top-right");
-                alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[002]</p>", "danger", 10);
-                console.log(err)
-
-            });
-        } else {
-            /* ID PREENCHIDO FAZ UM PUT */
-            /* JSON */
-            var wData = "";
-            wData += "id=" + wId + "&";
-            wData += "nmCliente=" + wNomeCliente + "&";
-            wData += "anCpf=" + wCpf + "&";
-            wData += "dtNascimento=" + wNascimento + "&";
-            wData += "anEmail=" + wEmail + "&";
-            wData += "anLogradouro=" + wLogradouro + "&";
-            wData += "anTelefone=" + wTelefone + "&";
-            wData += "dmSexo=" + wSexo + "";
-            wData = encodeURI(wData)
-
-            wURI = "../AlterarClienteServlet"
-
-
-
-            $.ajax({
-                type: "post",
-                url: wURI,
-                data: wData,
-            }).then((res, textStatus, jqXHR) => {
-                console.log("res")
-                console.log(res)
-                var wStatus = jqXHR.status
-                if (wStatus == 200) {
-                    alertify.set("notifier", "position", "top-right");
-                    alertify.notify("<p style='color:white;font-size:16px;'>Cliente Alterado com Sucesso com Sucesso</p>", "success", 10);
-                    setTimeout(function () {
-                        document.location.reload(true);
-                    }, 1500);
-                } else {
-                    alertify.set("notifier", "position", "top-right");
-                    alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[001]</p>", "danger", 10);
-                }
-            }).catch((err) => {
-                alertify.set("notifier", "position", "top-right");
-                alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[002]</p>", "danger", 10);
-                console.log(err)
-
-            });
-        }
-    }
-    /* DELETA CLIENTE */
-    function fDeletarCliente() {
-        var wId = $("#idCliente").val();
-        console.log(fDeletarCliente)
-
-        $.ajax("../ExcluirClienteServlet?id=" + wId).then((result) => {
+        $.ajax("../ExcluirProdutosServlet?id=" + wId).then((result) => {
             console.log(result)
             alertify.set("notifier", "position", "top-right");
-            alertify.notify("<p style='color:white;font-size:16px;'>Cliente Excluido com Sucesso</p>", "success", 10);
+            alertify.notify("<p style='color:white;font-size:16px;'>Produto Excluido com Sucesso</p>", "success", 10);
             /* RECARREGA PAGINA QUEBRA GALHO*/
             setTimeout(function () {
                 document.location.reload(true);
@@ -211,8 +77,19 @@ $(document).ready(function () {
             alertify.error('err');
 
         });
-
     }
+
+
+    function fNovoProduto() {
+        $("[name='id']").val("")
+        $("[name='dmFilial']").val("")
+        $("[name='nmProduto']").val("")
+        $("[name='dmCategoria']").val("")
+        $("[name='nmModelo']").val("")
+        $("[name='vlProduto']").val("")
+        $("[name='qtProduto']").val("")
+    }
+
     function fValidaSalvar(pOpcao) {
         /* VARIAVEIS */
         var wInpBoNull = [],
@@ -223,7 +100,6 @@ $(document).ready(function () {
 
                 $(wEl).removeClass("border border-danger");
                 $(wEl).siblings('label').removeClass("text-danger");
-
             });
             return true;
         }
@@ -240,12 +116,9 @@ $(document).ready(function () {
                 $(wEl).siblings('label').removeClass("text-danger");
             }
         });
-
         wInpBoNull.forEach(wInpBoNull => {
             wStrInp += "<br> - " + wInpBoNull + "";
         });
-
-
         if (wInpBoNull.length > 0) {
             alertify.set("notifier", "position", "top-right");
             alertify.error("<p style='color:white;font-size:16px;'> Há campos obrigatórios não preenchidos: " + wStrInp + "</p>", "danger", 10);
@@ -254,6 +127,126 @@ $(document).ready(function () {
             return true;
         }
     }
-    ;
-});
+
+
+    /* BUSCA CLIENTE PARA EDICAO */
+    function fEditarProduto(pId) {
+        $.ajax("../AlterarProdutosServlet?id=" + pId).then((result) => {
+            var wResult = JSON.parse(result);
+            $("[name='id']").val(wResult["id"])
+            $("[name='dmFilial']").val(wResult["dmFilial"])
+            $("[name='nmProduto']").val(wResult["nmProduto"])
+            $("[name='dmCategoria']").val(wResult["dmCategoria"])
+            $("[name='nmModelo']").val(wResult["nmModelo"])
+            $("[name='vlProduto']").val(wResult["vlProduto"])
+            $("[name='qtProduto']").val(wResult["qtProduto"])
+        }).catch((err) => {
+            console.log("ERR")
+            console.log(err)
+        });
+    }
+
+    /* CRIA OU ALTERA PRODUTO */
+    function fSalvarProduto() {
+        var wId = $("[name='id']").val()
+        var wDmFilial = $("[name='dmFilial']").val()
+        var wNmCliente = $("[name='nmProduto']").val()
+        var wDmCategoria = $("[name='dmCategoria']").val()
+        var wNmModelo = $("[name='nmModelo']").val()
+        var wVlProduto = $("[name='vlProduto']").val()
+        var wQtProduto = $("[name='qtProduto']").val()
+        /* SE FOR UM NOVO REGISTRO [POST]*/
+        if (wId == "") {
+            /* VALIDA CAMPOS */
+            var wValoresValidos = fValidaSalvar();
+            /* SE CAMPOS OBRIGATORIOS NAO PREENCHIDO*/
+            if (!wValoresValidos) {
+                return
+            }
+            /* JSON */
+
+            var wData = "";
+            wData += "filial=" + wDmFilial + "&";
+            wData += "nome=" + wNmCliente + "&";
+            wData += "categoria=" + wDmCategoria + "&";
+            wData += "modelo=" + wNmModelo + "&";
+            wData += "preco=" + wVlProduto + "&";
+            wData += "quantidade=" + wQtProduto + "";
+            wData = encodeURI(wData)
+
+            wURI = "../produtos/CadastrarProdutosServlet"
+
+
+            $.ajax({
+                type: "post",
+                url: wURI,
+                data: wData,
+            }).then((res, textStatus, jqXHR) => {
+                var wStatus = jqXHR.status
+                if (wStatus == 200) {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.notify("<p style='color:white;font-size:16px;'>Produto Cadastrado com Sucesso com Sucesso</p>", "success", 10);
+                    setTimeout(function () {
+                        document.location.reload(true);
+                    }, 1500);
+                } else {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[001]</p>", "danger", 10);
+                }
+            }).catch((err) => {
+                alertify.set("notifier", "position", "top-right");
+                alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[002]</p>", "danger", 10);
+                console.log(err)
+
+            });
+        } else {
+            /* VALIDA CAMPOS */
+            var wValoresValidos = fValidaSalvar();
+            /* SE CAMPOS OBRIGATORIOS NAO PREENCHIDO*/
+            if (!wValoresValidos) {
+                return
+            }
+            /* ID PREENCHIDO FAZ UM PUT */
+            /* JSON */
+            var wData = "";
+            wData += "id=" + wId + "&";
+            wData += "filial=" + wDmFilial + "&";
+            wData += "nome=" + wNmCliente + "&";
+            wData += "categoria=" + wDmCategoria + "&";
+            wData += "modelo=" + wNmModelo + "&";
+            wData += "preco=" + wVlProduto + "&";
+            wData += "quantidade=" + wQtProduto + "";
+            wData = encodeURI(wData)
+
+            wURI = "../AlterarProdutosServlet"
+
+
+
+            $.ajax({
+                type: "post",
+                url: wURI,
+                data: wData,
+            }).then((res, textStatus, jqXHR) => {
+                console.log("res")
+                console.log(res)
+                var wStatus = jqXHR.status
+                if (wStatus == 200) {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.notify("<p style='color:white;font-size:16px;'>Produto Alterado com Sucesso com Sucesso</p>", "success", 10);
+                    setTimeout(function () {
+                        document.location.reload(true);
+                    }, 1500);
+                } else {
+                    alertify.set("notifier", "position", "top-right");
+                    alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[001]</p>", "danger", 10);
+                }
+            }).catch((err) => {
+                alertify.set("notifier", "position", "top-right");
+                alertify.error("<p style='color:white;font-size:16px;'>Erro interno Contate a Equipe de suporte do Sistema code[002]</p>", "danger", 10);
+                console.log(err)
+
+            });
+        }
+    }
+})
 

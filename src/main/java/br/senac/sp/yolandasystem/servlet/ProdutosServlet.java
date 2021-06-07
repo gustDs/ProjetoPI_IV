@@ -27,7 +27,8 @@ public class ProdutosServlet extends HttpServlet {
         //CHAMA A LISTA DE CLIENTES E JOGA NA TELA (JSP)
         List<Produtos> listaProdutos = ProdutosDAO.getProdutos();
         request.setAttribute("listaProdutos", listaProdutos);
-        request.getRequestDispatcher("/listaProdutos.jsp").forward(request, response);
+        System.out.println("PASSOUUUUU");
+        request.getRequestDispatcher("produtos/listaProdutos.jsp").forward(request, response);
 
     }
 

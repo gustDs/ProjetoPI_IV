@@ -16,12 +16,12 @@ public class AlterarProdutosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String idstr = request.getParameter("id");
         Integer id = Integer.valueOf(idstr);
 
         Produtos produto = ProdutosDAO.getProduto(id);
         request.setAttribute("produto", produto);
+
         response.getWriter().write(produto.toString());
         //request.getRequestDispatcher("/produtos/cadastrar.jsp").forward(request, response);
     }
@@ -47,7 +47,7 @@ public class AlterarProdutosServlet extends HttpServlet {
 
         Produtos produtos = new Produtos(id, filial, nome, categoria, modelo, preco, quantidade);
         boolean ok = ProdutosDAO.atualizar(produtos);
-        Redirect.sendRedirect(ok, response);
+        response.setStatus(ok ? 200 : 500);
     }
 
 }
