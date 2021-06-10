@@ -34,38 +34,38 @@ public class AutorizacaoFilter implements Filter {
         if (session.getAttribute("usuario") == null) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
 
+        } else {
+            //PASSO 2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO AO MÓDULO
+            Usuario usuario = (Usuario) session.getAttribute("usuario");
+            String url = httpServletRequest.getRequestURI();
+            //CHAMA A FUNÇÃO
+            if (verificarAcessoNegado(url, usuario)) {
+                httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
+            }
+
         }
-
-        //PASSO 2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO AO MÓDULO
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        String url = httpServletRequest.getRequestURI();
-
-        //CHAMA A FUNÇÃO
-        if (verificarAcessoNegado(url, usuario)) {
-            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
-        }
-
     }
 
     //FUNÇÃO PARA RESTRINGIR O USUÁRIO DE ACESSAR MÓDULOS
     //EXEMPLO: SE A URL CONTER /protegido/gerente, E O USUÁRIO NAO FOR UM GERENTE, VAI DAR ACESSO NEGADO
     public boolean verificarAcessoNegado(String url, Usuario usuario) {
-        /*
-        System.out.println("entrouuu");
-        System.out.println("url" + url);
-        System.out.println(url.contains("/protegido/ClientesServlet"));
-        System.out.println("EXISTE ?? " + usuario.getPerfil());
-        System.out.println("usuario.isTI() " + usuario.isTI());
-        boolean naoOk = false;
-        if (url.contains("/protegido/ClientesServlet") && !usuario.isTI()) {
-            naoOk = true;
+        boolean naoOk = true;
+        if (url.contains("/protegido/index") && (usuario.isVendedor() || usuario.isGerente() || usuario.isTI() || usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains("/protegido/RelatorioServlet") && (usuario.isGerente() || usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains("/protegido/ClientesVendasServlet") && (usuario.isVendedor() || usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains("/protegido/ClientesServlet") && (usuario.isTI() || usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains("/protegido/ProdutosServlet") && (usuario.isRetaguarda()|| usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains(".js")) {
+            naoOk = false;
         }
-        if (url.contains("/protegido/ClientesServlet") && !usuario.isTI()) {
-            naoOk = true;
-        }
-        
-        */
-        return false;
+
+        return naoOk;
+
     }
 
     public void doFilter(ServletRequest request, ServletResponse response,

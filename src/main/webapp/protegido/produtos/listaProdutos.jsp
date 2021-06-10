@@ -34,16 +34,18 @@
                             </thead>
 
                             <tbody class="text-center "> 
-                                <c:forEach items="${listaProdutos}" var="produto">                  
-                                    <tr data-id="${produto.id}">
-                                        <td>${produto.id}</td>
-                                        <td>${produto.filial}</td>
-                                        <td>${produto.nome}</td>
-                                        <td>${produto.categoria}</td>
-                                        <td>${produto.modelo}</td>
-                                        <td>${produto.preco}</td>
-                                        <td>${produto.quantidade}</td>
-                                    </tr>
+                                <c:forEach items="${listaProdutos}" var="produto">
+                                    <c:if test="${sessionScope.usuario.filial.equals(produto.filial)}">
+                                        <tr data-id="${produto.id}">
+                                            <td>${produto.id}</td>
+                                            <td>${produto.filial}</td>
+                                            <td>${produto.nome}</td>
+                                            <td>${produto.categoria}</td>
+                                            <td>${produto.modelo}</td>
+                                            <td>${produto.preco}</td>
+                                            <td>${produto.quantidade}</td>
+                                        </tr>
+                                    </c:if>
                                 </c:forEach>    
                             </tbody>
                         </table>
@@ -62,10 +64,10 @@
                         <label class="form-label">Filial</label>
                         <select name="dmFilial" required='required' class="form-control">
                             <option value="0">--Escolha a Filial--</option>
-                            <option value="Campina Grande">Campina Grande</option>
-                            <option value="Sao Paulo">São Paulo</option>
-                            <option value="Joinville">Joinville</option>
-                            <option value="Brasilia">Brasilia</option>
+                            <option value="PB">Campina Grande</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SC">Joinville</option>
+                            <option value="BSB">Brasilia</option>
                         </select>
                     </div>
 

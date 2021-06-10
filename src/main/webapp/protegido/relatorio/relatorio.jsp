@@ -15,7 +15,7 @@
     <body class="">
         <c:import url="../header.jsp"/>
         <c:import url="../navBar.jsp"/>
-        <script type="text/javascript" src="relatorio.js"></script>
+        <script type="text/javascript" src="relatorio/relatorio.js"></script>
 
         <div class="mt-4 border p-4" style="width:100%;float:left;margin-left:5px;margin-right:5px" >
             <h4>Relatorio de Vendas</h4>

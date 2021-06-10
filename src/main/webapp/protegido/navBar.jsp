@@ -40,15 +40,14 @@
                         </li>
                     </c:if>
 
-                    <c:if test="${sessionScope.usuario.isVendedor() || sessionScope.usuario.isAdministrador() }"> 
-                        <li class="nav-item">}"> 
+                    <c:if test="${sessionScope.usuario.isVendedor() || sessionScope.usuario.isAdministrador() }">  
                         <li class="nav-item">
-                            <a class="nav-link" href="ClientesVendasServlet"><i class="fa fa-hand-holding-usd"></i> Vendas</a>
+                            <a class="nav-link" href="ClientesVendasServlet"><i class="fa fa-university" aria-hidden="true"></i> Vendas</a>
                         </li>
                     </c:if>
                     <c:if test="${sessionScope.usuario.isGerente() || sessionScope.usuario.isAdministrador()}"> 
                         <li class="nav-item">
-                            <a class="nav-link" href="RelatorioServlet"><i class="fa fa-file-alt"></i> Relatório</a>
+                            <a class="nav-link" href="RelatorioServlet"><i class="fa fa-print"></i> Relatório</a>
                         </li>
                     </c:if>
                 </ul>

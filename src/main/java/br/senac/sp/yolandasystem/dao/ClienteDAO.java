@@ -89,6 +89,7 @@ public class ClienteDAO {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
+                int id2 = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String cpf = rs.getString("cpf");
                 Date datanasc = rs.getDate("datanasc");
@@ -96,7 +97,7 @@ public class ClienteDAO {
                 String endereco = rs.getString("endereco");
                 String telefone = rs.getString("telefone");
                 String sexo = rs.getString("sexo");
-                cliente = new Cliente(0, nome, cpf, datanasc, email, endereco, telefone, sexo);
+                cliente = new Cliente(id2, nome, cpf, datanasc, email, endereco, telefone, sexo);
             }
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);

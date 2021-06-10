@@ -121,6 +121,7 @@ public class VendaDAO {
             /* dtIncSys fim = */
             query += " AND DATE_FORMAT(x.dtIncSys, '%Y-%m-%d') <='" + dtFim + "'";
         }
+    
         Connection con;
         try {
             con = Conexao.getConexao();

@@ -11,7 +11,7 @@ $(document).ready(function () {
         "orderCellsTop": true,
         "fixedHeader": true,
         "fixedColumns": true,
-        "paging": true,
+        "paging": false,
         "ordering": true,
         "destroy": true,
         "orderCellsTop": true,

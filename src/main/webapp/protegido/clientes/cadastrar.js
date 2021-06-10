@@ -75,7 +75,7 @@ $(document).ready(function () {
     }
     /* BUSCA CLIENTE PARA EDICAO */
     function fEditarCliente(pId) {
-        $.ajax("../AlterarProdutosServlet?id=" + pId).then((result) => {
+        $.ajax("../AlterarClienteServlet?id=" + pId).then((result) => {
             var wResult = JSON.parse(result);
             console.log(wResult)
             $("[name='idCliente']").val(wResult["id"])

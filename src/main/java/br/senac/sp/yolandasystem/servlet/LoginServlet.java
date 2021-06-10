@@ -2,6 +2,7 @@ package br.senac.sp.yolandasystem.servlet;
 
 import br.senac.sp.yolandasystem.dao.UsuarioDAO;
 import br.senac.sp.yolandasystem.entidade.Usuario;
+import br.senac.sp.yolandasystem.utils.CryptoUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,17 +17,23 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String login = request.getParameter("login");
-        String senha = request.getParameter("senha");
+        String senhaAberta = request.getParameter("senha");
 
-        Usuario usuario = UsuarioDAO.getUsuario(login, senha);
-        if (usuario != null) { //Usuario OK
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("usuario", usuario);
-            response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
+        Usuario usuario = UsuarioDAO.getUsuario(login);
+        if (usuario == null) { //Usuario naoOk
+            response.sendRedirect(request.getContextPath() + "/login.jsp?loginInvalido=true");
+
         } else {
-            request.setAttribute("notValid", true);
-            //response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            boolean senhaOk = CryptoUtils.verificarSenha(senhaAberta, usuario.getSenha());
+            if (senhaOk) {
+                HttpSession sessao = request.getSession();
+                sessao.setAttribute("usuario", usuario);
+                response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
+            } else {
+                request.setAttribute("notValid", true);
+                response.sendRedirect(request.getContextPath() + "/login.jsp?loginInvalido=true");
+            }
+
         }
     }
 
