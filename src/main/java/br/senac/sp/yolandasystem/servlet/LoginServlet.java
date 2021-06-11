@@ -21,7 +21,8 @@ public class LoginServlet extends HttpServlet {
 
         Usuario usuario = UsuarioDAO.getUsuario(login);
         if (usuario == null) { //Usuario naoOk
-            response.sendRedirect(request.getContextPath() + "/login.jsp?loginInvalido=true");
+            request.setAttribute("notValid", true);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
 
         } else {
             boolean senhaOk = CryptoUtils.verificarSenha(senhaAberta, usuario.getSenha());
@@ -31,7 +32,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
             } else {
                 request.setAttribute("notValid", true);
-                response.sendRedirect(request.getContextPath() + "/login.jsp?loginInvalido=true");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
 
         }

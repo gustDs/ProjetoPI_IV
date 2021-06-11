@@ -24,7 +24,7 @@ public class CryptoUtils {
     }
     
     public static void main(String[] args) {
-        String senha = "1234";
+        String senha = "gustavomartins";
         System.out.println("hash = " + hashSenha(senha));
     }
     

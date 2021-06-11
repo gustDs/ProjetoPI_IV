@@ -38,8 +38,9 @@ public class AutorizacaoFilter implements Filter {
             //PASSO 2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO AO MÓDULO
             Usuario usuario = (Usuario) session.getAttribute("usuario");
             String url = httpServletRequest.getRequestURI();
+            String method = httpServletRequest.getMethod();
             //CHAMA A FUNÇÃO
-            if (verificarAcessoNegado(url, usuario)) {
+            if (verificarAcessoNegado(url, usuario, method)) {
                 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
             }
 
@@ -48,7 +49,8 @@ public class AutorizacaoFilter implements Filter {
 
     //FUNÇÃO PARA RESTRINGIR O USUÁRIO DE ACESSAR MÓDULOS
     //EXEMPLO: SE A URL CONTER /protegido/gerente, E O USUÁRIO NAO FOR UM GERENTE, VAI DAR ACESSO NEGADO
-    public boolean verificarAcessoNegado(String url, Usuario usuario) {
+    public boolean verificarAcessoNegado(String url, Usuario usuario, String method) {
+        System.out.println("method " + method);
         boolean naoOk = true;
         if (url.contains("/protegido/index") && (usuario.isVendedor() || usuario.isGerente() || usuario.isTI() || usuario.isAdministrador())) {
             naoOk = false;
@@ -56,14 +58,17 @@ public class AutorizacaoFilter implements Filter {
             naoOk = false;
         } else if (url.contains("/protegido/ClientesVendasServlet") && (usuario.isVendedor() || usuario.isAdministrador())) {
             naoOk = false;
+        }else if (url.contains("/protegido/ClientesVendasServlet") && method.equalsIgnoreCase("POST") || (usuario.isVendedor()|| usuario.isAdministrador())) {
+            naoOk = false;
         } else if (url.contains("/protegido/ClientesServlet") && (usuario.isTI() || usuario.isAdministrador())) {
             naoOk = false;
-        } else if (url.contains("/protegido/ProdutosServlet") && (usuario.isRetaguarda()|| usuario.isAdministrador())) {
+        } else if (url.contains("/protegido/ProdutosServlet") && (usuario.isRetaguarda() || usuario.isAdministrador())) {
+            naoOk = false;
+        } else if (url.contains("/protegido/ProdutosServlet") && method.equalsIgnoreCase("POST")) {
             naoOk = false;
         } else if (url.contains(".js")) {
             naoOk = false;
         }
-
         return naoOk;
 
     }
