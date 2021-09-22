@@ -14,7 +14,7 @@ public class Produtos {
     private String wDesc;
     private double wValor;
     private int wQtdProduto;
-    private boolean wStatus;
+    private int wBoInativo;
 
     public int getwId() {
         return wId;
@@ -64,33 +64,32 @@ public class Produtos {
         this.wQtdProduto = wQtdProduto;
     }
 
-    public boolean iswStatus() {
-        return wStatus;
+    public int getwBoInativo() {
+        return wBoInativo;
     }
 
-    public void setwStatus(boolean wStatus) {
-        this.wStatus = wStatus;
+    public void setwBoInativo(int wBoInativo) {
+        this.wBoInativo = wBoInativo;
     }
     
     
     
-    
+ 
 
-
-
-    public Produtos(int wId, String wNome, double wAvaliacao, String wDesc, double wValor, int wQtdProduto, boolean wStatus) {
+    public Produtos(int wId, String wNome, double wAvaliacao, String wDesc, double wValor, int wQtdProduto, int wBoInativo) {
         this.wId = wId;
         this.wNome = wNome;
         this.wAvaliacao = wAvaliacao;
         this.wDesc = wDesc;
         this.wValor = wValor;
         this.wQtdProduto = wQtdProduto;
-        this.wStatus = wStatus;
+        this.wBoInativo = wBoInativo;
     }
 
     @Override
     public String toString() {
-        return String.format("ID: %s <br/> Nome: %s <br/> Avaliação: %s <br/> Descrição: %s <br/> Valor: %s <br/> Quantidade: %s <br/> Status: %s <br/>", wId, wNome, wAvaliacao, wDesc, wValor, wQtdProduto, wStatus);
+        return String.format("{\"id\": %s, \"nmProduto\": \"%s\", \"dmAvaliacao\": \"%s\" , \"anDescricao\": \"%s\" , \"vlProduto\": \"%s\" , \"qtProduto\": \"%s\", \"dmStatus\": \"%s\"}", wId, wNome, wAvaliacao, wDesc, wValor, wQtdProduto, wBoInativo);
+        //return String.format("ID: %s <br/> Nome: %s <br/> Avaliação: %s <br/> Descrição: %s <br/> Valor: %s <br/> Quantidade: %s <br/> Status: %s <br/>", wId, wNome, wAvaliacao, wDesc, wValor, wQtdProduto, wBoInativo);
     }
     
     

@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>ListarProdutosSV</servlet-name>
-        <servlet-class>br.senac.sp.yolandaiv.servlet.ListarProdutosSV</servlet-class>
+        <servlet-name>produto</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.produto.produto</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CadastrarProdutosSV</servlet-name>
-        <servlet-class>br.senac.sp.yolandaiv.servlet.CadastrarProdutosSV</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>StatusProdutosSV</servlet-name>
-        <servlet-class>br.senac.sp.yolandaiv.servlet.StatusProdutosSV</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AlterarProdutosSV</servlet-name>
-        <servlet-class>br.senac.sp.yolandaiv.servlet.AlterarProdutosSV</servlet-class>
+        <servlet-name>produtoImagem</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.produto.produtoImagem</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ListarProdutosSV</servlet-name>
-        <url-pattern>/ListarProdutosSV</url-pattern>
+        <servlet-name>produto</servlet-name>
+        <url-pattern>/produto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CadastrarProdutosSV</servlet-name>
-        <url-pattern>/CadastrarProdutosSV</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StatusProdutosSV</servlet-name>
-        <url-pattern>/StatusProdutosSV</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AlterarProdutosSV</servlet-name>
-        <url-pattern>/AlterarProdutosSV</url-pattern>
+        <servlet-name>produtoImagem</servlet-name>
+        <url-pattern>/produtoImagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
