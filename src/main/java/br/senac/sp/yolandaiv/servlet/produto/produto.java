@@ -59,7 +59,7 @@ public class produto extends HttpServlet {
             Double wvlProduto = Double.valueOf(wJson.getString("vlProduto"));
             Integer wQtProduto = Integer.valueOf(wJson.getString("qtProduto"));
 
-            //!STATUS SEMPRE ESTÁ COMO TRUE!
+            
             Produtos produtos = new Produtos(0, wNmProduto, wDmAvaliacao, wAnDescricao, wvlProduto, wQtProduto, 0);
             boolean ok = ProdutosDAO.cadastrar(produtos);
 

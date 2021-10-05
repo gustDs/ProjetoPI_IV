@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Yolanda</title>
         <c:import url="header.jsp"/>
+        <link rel="stylesheet" href="cards.css"> 
     </head>
     <body>
         <img width="200px" style="height: 120px;" name="cc-cli"  src="logo.png">
@@ -24,10 +25,18 @@
                     <li class="nav-item border">
                         <a class="nav-link" data-page="produto">Listar Produtos</a>
                     </li>
+                    <li class="nav-item border">
+                        <a class="nav-link" data-page="Login">Login</a>
+                    </li>
+                    <li class="nav-item border">
+                        <a class="nav-link" data-page="carrinho">Carrinho</a>
+                    </li>
                 </ul>
             </div>
         </nav>
-        <div name='conteiner'></div>
+        <div id="container" name="container">
+            <!-- card produtos -->
+        </div>
     </body>
     <script type="text/javascript" src="index.js"></script>
 </html>
