@@ -23,7 +23,8 @@
                         <th>Valor</th>
                         <th>Quantidade</th>
                         <th>Status</th>
-                        <th></th>  
+                        <th></th>
+                        <th></th>
                         </thead>
 
                         <tbody>
@@ -54,6 +55,12 @@
                                             </button>
                                         </c:if>
                                     </td>
+                                    <td>
+                                        <c:if test="${not empty produtos}">
+                                            <a href="detalheProduto?wId=${produtos.wId}">DETALHES</a>
+                                        </c:if>
+                                    </td>
+
 
                                 </tr>
                             </c:forEach>
@@ -138,7 +145,7 @@
                                 <input type="file"  name="blImagem"  class="custom-file-input form-label" id="blImagem">
                             </div >
                             <div class="cc-col col-12">
-                                 <label for="previewImg">Arquivo</label><br>
+                                <label for="previewImg">Arquivo</label><br>
                                 <div required='required' name='previewImg' id='previewImg'></div>
                             </div>
 

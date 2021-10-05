@@ -8,6 +8,14 @@
         <servlet-name>produtoImagem</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.produto.produtoImagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>detalheProduto</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.produto.detalheProduto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>produtoHome</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.produto.produtoHome</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produto</servlet-name>
         <url-pattern>/produto</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>produtoImagem</servlet-name>
         <url-pattern>/produtoImagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detalheProduto</servlet-name>
+        <url-pattern>/detalheProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>produtoHome</servlet-name>
+        <url-pattern>/produtoHome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

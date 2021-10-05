@@ -122,7 +122,7 @@ $(document).ready(function () {
                         $.ajax({
                             url: "produto",
                         }).done(function (result) {
-                            $("[name='conteiner']").html(result)
+                            $("[name='container']").html(result)
                         });
                     } else {
                         alertify.set("notifier", "position", "top-right");
@@ -141,7 +141,7 @@ $(document).ready(function () {
                     nmImagem: wNmImagem,
                     blArquivo: wBlArquivo,
                     boImgPrincipal: wBoImgPrincipal,
-                    boInativo: wBoInativo
+                    boInativo: wBoInativo 
                 }
                 $.ajax({
                     type: "PUT",
@@ -155,7 +155,7 @@ $(document).ready(function () {
                         $.ajax({
                             url: "produto",
                         }).done(function (result) {
-                            $("[name='conteiner']").html(result)
+                            $("[name='container']").html(result)
                         });
                     } else {
                         alertify.set("notifier", "position", "top-right");
@@ -209,7 +209,7 @@ $(document).ready(function () {
                         $.ajax({
                             url: "produto",
                         }).done(function (result) {
-                            $("[name='conteiner']").html(result)
+                            $("[name='container']").html(result)
                         });
                     } else {
                         alertify.set("notifier", "position", "top-right");
@@ -245,7 +245,7 @@ $(document).ready(function () {
                     $.ajax({
                         url: "produto",
                     }).done(function (result) {
-                        $("[name='conteiner']").html(result)
+                        $("[name='container']").html(result)
                     });
                 } else {
                     alertify.set("notifier", "position", "top-right");
@@ -386,13 +386,15 @@ $(document).ready(function () {
             url: wURI
         }).then((res, textStatus, jqXHR) => {
             res = JSON.parse(res)
+       
             if (res.cnRetorno == 0) {
                 alertify.set("notifier", "position", "top-right");
                 alertify.notify("<p style='color:white;font-size:16px;'>Produto Alterado com Sucesso com Sucesso</p>", "success", 10);
                 $.ajax({
                     url: "produto",
                 }).done(function (result) {
-                    $("[name='conteiner']").html(result)
+     
+                    $("[name='container']").html(result)
                 });
             }
         })
