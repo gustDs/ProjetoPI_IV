@@ -3,6 +3,7 @@ package br.senac.sp.yolandaiv.dao;
 import br.senac.sp.yolandaiv.conexao.Conexao;
 import br.senac.sp.yolandaiv.entidade.Produtos;
 import br.senac.sp.yolandaiv.entidade.ProdutosImagem;
+import br.senac.sp.yolandaiv.entidade.ProdutosIndex;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -256,6 +257,68 @@ public class ProdutosDAO {
             ok = false;
         }
         return ok;
+
+    }
+
+    public static List<ProdutosImagem> getImagensDetalhe(int pProduto) {
+        List<ProdutosImagem> produtosImagem = new ArrayList<>();
+        String wQuery = "SELECT *\n"
+                + "FROM produtosimagem AS pi\n"
+                + "JOIN produtos AS P ON pi.cnProduto = p.id";
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(wQuery);
+            ps.setInt(1, pProduto);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int wId = rs.getInt("id");
+                int wCnProduto = rs.getInt("cnProduto");
+                String wBlArquivo = rs.getString("blArquivo");
+                int wBoImgPrincipal = rs.getInt("boImgPrincipal");
+                int wBoInativo = rs.getInt("boInativo");
+                String wDtInclusao = rs.getString("dtIncSys");
+                String wNmImagem = rs.getString("nmImagem");
+
+                produtosImagem.add(new ProdutosImagem(wId, wCnProduto, wBlArquivo, wBoImgPrincipal, wBoInativo, wDtInclusao, wNmImagem));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutosDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtosImagem;
+
+    }
+    
+   /////  -------------------------- ******GUSTA****** ---------------------------- ////////
+    public static List<ProdutosIndex>  getImagemPrincipal() {
+       List<ProdutosIndex> produtosIndex = new ArrayList<>();
+        
+        String wQuery = "SELECT *\n"
+                + "FROM produtos x\n"
+                + "LEFT JOIN produtosimagem y ON(y.cnProduto = x.id) WHERE y.boImgPrincipal = 1";
+        Connection con;
+        try {
+            con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(wQuery);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int wId = rs.getInt("id");
+                int wCnProduto = rs.getInt("cnProduto");
+                String wBlArquivo = rs.getString("blArquivo");
+                int wBoImgPrincipal = rs.getInt("boImgPrincipal");
+                String anNome = rs.getString("anNome");
+                String anDescricao = rs.getString("anDescricao");
+                double wValor = rs.getDouble("vlProduto");
+
+                ProdutosIndex imagensProdutos = new ProdutosIndex(wId, wCnProduto, wBlArquivo, wBoImgPrincipal, anNome, anDescricao, wValor);
+                produtosIndex.add(imagensProdutos);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutosDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtosIndex;
 
     }
 

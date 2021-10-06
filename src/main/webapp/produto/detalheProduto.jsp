@@ -25,16 +25,16 @@
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>,
-                                <c:forEach items="${listaProdutos}" var="produtos">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li
-                                </c:forEach>
+                                    <c:forEach items="${listaImagens}" var="imagens">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li
+                                    </c:forEach>
                             </ol>
                             <div class="carousel-inner">                            
                                 <div class="carousel-item active">
                                     <img class="d-block w-100" slide="" src="nvidia.jpg" width="500px" height="500px" alt="First slide">
                                 </div>
-                                <c:forEach items="${listaProdutos}" var="produtos">
-                                  <img class="d-block w-100" src="" width="500px" height="500px" alt="First slide">
+                                <c:forEach items="${listaImagens}" var="imagens">
+                                    <img class="d-block w-100" src="${imagens.blArquivo}" width="500px" height="500px" alt="First slide">
                                 </c:forEach>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -45,7 +45,7 @@
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
-                        </div>
+                        </div><br>
                         <!-- 
                         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -63,6 +63,13 @@
                         -->
                     </div>
                 </div>
+                <h3>
+                    R$ ${produtos.wValor}<br>
+                    Avaliação: ${produtos.wAvaliacao} estrelas<br>
+                    <button name="button" type="button"
+                            style="margin: 10px; padding: 16px; width: 150px; background-color: darkblue; color: aliceblue; border: none;border-radius: 4px;font-size: 16px">Comprar
+                    </button>
+                </h3><br>
                 <h3>
                     Descrição do produto:
                 </h3>
