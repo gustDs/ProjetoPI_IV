@@ -26,7 +26,7 @@
                         <a class="nav-link" data-page="produto">Listar Produtos</a>
                     </li>
                     <li class="nav-item border">
-                        <a class="nav-link" data-page="Login">Login</a>
+                        <a class="nav-link" data-page="Login" href="login.html">Login</a>
                     </li>
                     <li class="nav-item border">
                         <a class="nav-link" data-page="carrinho">Carrinho</a>
