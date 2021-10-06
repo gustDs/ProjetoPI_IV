@@ -20,28 +20,30 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url: "produto?all",
+        url: "imagemPrincipal",
         contentType: "text/plain",
         type: "GET",
         success: function (result) {
+      
             var wDataResult = JSON.parse(result)
             var wHtm = "";
             wDataResult.forEach(element => {
+               
                 wHtm += `
-                        <div class="main">
+                        <div class="main" href="imagemPrincipal?id=${element.id}">
                             <div class="cards">
                                 <div class="image">
-                                    <img src="nvidia.jpg">
+                                    <img src="${element.blArquivo}">
                                 </div>
                                 <div class="tittle">
-                                    <h2>${element.nmProduto}</h2>
+                                    <h2>${element.anNome}</h2>
                                 </div>
                                 <div class="preco">
-                                    <h2>${element.vlProduto}</h2>
+                                    <h2>R$ ${element.vlProduto}</h2>
                                 </div>
                                 <div class="des">
                                     <p>${element.anDescricao}</p>
-                                    <button>Deatlhes</button>
+                                <a href="detalheProduto?wId=${element.id}">Detalhes</a>
                                 </div>
                             </div>
                         </div>
@@ -51,10 +53,10 @@ $(document).ready(function () {
             $("[name='container']").html(wHtm)
         },
 
-        error: function () {
+        error: function (err) {
             console.log("ERR")
             console.log(err)
-            alert(err)
+        
         }
     });
 
