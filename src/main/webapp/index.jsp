@@ -26,6 +26,12 @@
                         <a class="nav-link" data-page="produto">Listar Produtos</a>
                     </li>
                     <li class="nav-item border">
+                        <a class="nav-link" data-page="usuario" href="./ListarUsuariosSV">Listar Usuarios</a>
+                    </li>
+                    <li class="nav-item border">
+                        <a class="nav-link" data-page="usuario" href="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
+                    </li>
+                    <li class="nav-item border">
                         <a class="nav-link" data-page="Login" href="login.html">Login</a>
                     </li>
                     <li class="nav-item border">
