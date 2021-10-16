@@ -24,6 +24,18 @@
         <servlet-name>imagemPrincipal</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.produto.imagemPrincipal</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListarUsuariosSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.usuario.ListarUsuariosSV</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarUsuariosSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.usuario.CadastrarUsuariosSV</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarUsuariosSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.usuario.AlterarUsuariosSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produto</servlet-name>
         <url-pattern>/produto</url-pattern>
@@ -47,6 +59,18 @@
     <servlet-mapping>
         <servlet-name>imagemPrincipal</servlet-name>
         <url-pattern>/imagemPrincipal</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarUsuariosSV</servlet-name>
+        <url-pattern>/ListarUsuariosSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarUsuariosSV</servlet-name>
+        <url-pattern>/usuario/CadastrarUsuariosSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarUsuariosSV</servlet-name>
+        <url-pattern>/AlterarUsuariosSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
