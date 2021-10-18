@@ -19,7 +19,6 @@
                         <th>Codigo</th>
                         <th>Nome</th>
                         <th>Avalicação</th>
-                        <th>Descrição</th>
                         <th>Valor</th>
                         <th>Quantidade</th>
                         <th>Status</th>
@@ -33,7 +32,6 @@
                                     <td>${produtos.wId}</td>
                                     <td>${produtos.wNome}</td>
                                     <td>${produtos.wAvaliacao}</td>
-                                    <td>${produtos.wDesc}</td>
                                     <td>${produtos.wValor}</td>
                                     <td>${produtos.wQtdProduto}</td>
                                     <td>                         

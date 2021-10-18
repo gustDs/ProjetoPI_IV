@@ -582,3 +582,58 @@ table{
         max-width: 1008px;
     }
 }
+
+
+/* LOADING > MODAL */
+
+.cc-loading-full {
+    display: none;
+}
+
+.cc-loading-full .cc-loading-spinner {
+    background: #212121;
+    width: auto;
+    padding: 15px;
+    position: fixed;
+    z-index: 10001;
+    border-radius: 40px;
+}
+
+.cc-loading-full .cc-loading-spinner img {
+    float: left;
+    width: 20px;
+}
+
+.cc-loading-full .cc-loading-fade {
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.cc-loading-full .cc-loading-title {
+    color: #fff;
+    margin: 0px;
+    float: none;
+    text-transform: uppercase;
+    width: auto;
+    line-height: normal;
+    margin: 0;
+    font-size: 12px;
+    position: absolute;
+    top: 64px;
+    width: 300px;
+    background: #212121;
+    text-align: center;
+    left: -150px;
+    padding: 0;
+    margin-left: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, .2) 0px 5px 6px 1px;
+    border: 1px solid #444;
+    line-height: 1.8em;
+}

@@ -1,54 +1,10 @@
-*{
-    margin: 0px;
-    padding: 0px;
+.cc-image{
+
+    height: 200px;
 }
 
-.main {
-    text-align: center;
-    
+.cc-card:hover {
+    box-shadow: inset 0px 0px 100px 0px rgba(0, 0, 0, 0.05), 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    cursor: pointer;
 }
 
-.cards {
-    width: 20%;
-    background-color: grey;
-    border-radius: 10px;
-    margin: 40px;
-    box-shadow: 2px 2px 10px black;
-    display: inline-block;
-
-}
-
-.image img{
-    width: 100%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-}
-
-.title {
-    text-align: center;
-    padding: 5px;
-    font-weight: bold;
-}
-
-.des {
-   text-align: center;
-   padding: 4px;
-}
-botao {
-  background-color: #f44336;
-  color: white;
-  padding: 15px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-a:hover, a:active {
-  background-color: red;
-}
-
-button:hover {
-    background-color: black;
-    color: white;
-    transition: .5s;
-}

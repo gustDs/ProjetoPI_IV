@@ -6,8 +6,8 @@
 
 
 $(document).ready(function () {
-
-    $("[name='menu'] li a").on("click", function () {
+    $("[data-loading-name='loading']").show()
+    $("[data-page]").on("click", function () {
         var wPage = $(this).attr("data-page")
         var wAjax = $.ajax(wPage)
 
@@ -30,30 +30,27 @@ $(document).ready(function () {
             wDataResult.forEach(element => {
                
                 wHtm += `
-                        <div class="main" href="imagemPrincipal?id=${element.id}">
-                            <div class="cards">
-                                <div class="image">
-                                    <img src="${element.blArquivo}">
-                                </div>
-                                <div class="tittle">
-                                    <h2>${element.anNome}</h2>
-                                </div>
-                                <div class="preco">
-                                    <h2>R$ ${element.vlProduto}</h2>
-                                </div>
-                                <div class="des">
-                                    <p>${element.anDescricao}</p>
-                                <a href="detalheProduto?wId=${element.id}">Detalhes</a>
-                                </div>
+                            <div class="cc-card card text-center m-4" style="width: 18rem;" href="imagemPrincipal?id=${element.id}">
+                              <img class="p-4 img-responsive center-block cc-image" src="${element.blArquivo}" alt="Imagem">
+                              <div class="card-body">
+                                <h5 class="card-title ">${element.anNome}</h5>
+                                <p class="card-text ">${element.anDescricao}</p>
+                                <p class="card-text font-weight-bold">R$ ${element.vlProduto}</p>
+                <div>
+                                <a class="btn btn-primary w-100 " href="detalheProduto?wId=${element.id}">DETALHES</a>
+                     </div>           
+                              </div>
                             </div>
-                        </div>
                         `
             });
             /* APPEND CARD TO CONTAINER*/
+            $("[data-loading-name='loading']").hide()
+            console.log(wHtm)
             $("[name='container']").html(wHtm)
         },
 
         error: function (err) {
+            $("[data-loading-name='loading']").hide()
             console.log("ERR")
             console.log(err)
         
