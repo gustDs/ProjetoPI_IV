@@ -67,8 +67,10 @@
                                     <option value="1">Arivo</option>
                                     <option value="0">Inativo</option>
                                 </select>
-
-                                <button class='cc-btn-verde' type="submit">Atualizar</button>
+                                <div class="p-3">
+                                    <button class='cc-btn-verde w-100' type="submit">Atualizar</button>
+                                </div>
+                                
                             </form>
                         </c:if>
 

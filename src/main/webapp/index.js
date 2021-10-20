@@ -56,5 +56,15 @@ $(document).ready(function () {
 
         }
     });
+    $("[data-page]").on("click", function () {
+        var wPage = $(this).attr("data-page")
+        var wAjax = $.ajax(wPage)
+        console.log(wPage)
+        $.ajax({
+            url: wPage,
+        }).done(function (result) {
+            $("[name='container']").html(result)
+        });
 
+    });
 });
