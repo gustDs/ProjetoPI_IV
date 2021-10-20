@@ -91,9 +91,38 @@ public class UsuariosDAO {
         return usuario;
     }
     
+    //LOGIN
+    public static Usuarios getUsuarioLogin(String anEmail, String nmSenha, String nmSenhaConfirma) {
+        Usuarios usuario = null;    
+        try {
+            Connection con = Conexao.getConexao();
+            String wQuery = "select * from usuarios where anEmail = ? and nmSenha = ? and nmSenhaConfirma = ?";
+            PreparedStatement ps = con.prepareStatement(wQuery);
+            ps.setString(1, anEmail);
+            ps.setString(2, nmSenha);
+            ps.setString(3, nmSenhaConfirma);
+            System.out.println(ps);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) { 
+                usuario = new Usuarios();
+                usuario.setAnEmail(anEmail);
+                usuario.setNmSenha(nmSenha);
+                usuario.setNmSenhaConfirma(nmSenhaConfirma);
+                usuario.setAnNome(rs.getString("anNome"));
+                usuario.setNmCpf(rs.getString("nmCpf"));
+                usuario.setAnPerfil(rs.getString("anPerfil"));
+                usuario.setBoInativo(rs.getInt("boInativo"));
+                               
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
+    }
+    
     public static boolean atualizar(Usuarios usuarios) {
         boolean ok = true;
-        String wQuery = "update usuarios set anNome=?, nmCpf=?, anEmail=?, anPerfil=?, nmSenha=?, nmSenhaConfirma=?, boInativo=? where anEmail='?'";
+        String wQuery = "update usuarios set anNome=?, nmCpf=?, anEmail=?, anPerfil=?, nmSenha=?, nmSenhaConfirma=?, boInativo=? where anEmail=?";
         Connection con;
         try {
             con = Conexao.getConexao();
@@ -105,6 +134,7 @@ public class UsuariosDAO {
             ps.setString(5, usuarios.getNmSenha());
             ps.setString(6, usuarios.getNmSenhaConfirma());
             ps.setInt(7, usuarios.getBoInativo());
+            ps.setString(8, usuarios.getAnEmail());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);

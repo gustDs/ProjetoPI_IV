@@ -11,7 +11,7 @@
     <body class="container">
         <h1>Lista de Usuarios!</h1>
 
-        <table>
+        <table class="table">
             <th>Nome</th>
             <th>CPF</th>
             <th>E-mail</th>

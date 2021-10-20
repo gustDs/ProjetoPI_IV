@@ -65,6 +65,9 @@ public class Usuarios {
     public void setNmSenhaConfirma(String nmSenhaConfirma) {
         this.nmSenhaConfirma = nmSenhaConfirma;
     }
+    
+    public Usuarios() {
+    }
 
     public Usuarios(String anNome, String nmCpf, String anEmail, String anPerfil, String nmSenha, String nmSenhaConfirma, int boInativo) {
         this.anNome = anNome;

@@ -23,7 +23,7 @@ public class AlterarUsuariosSV extends HttpServlet {
         Usuarios usuarios = UsuariosDAO.getUsuario(anEmail);
         request.setAttribute("usuarios", usuarios);
         
-        request.getRequestDispatcher("/usuario/cadastrarUsuarios.jsp").forward(request, response);
+        request.getRequestDispatcher("/protegido/usuario/cadastrarUsuarios.jsp").forward(request, response);
 
     }
 

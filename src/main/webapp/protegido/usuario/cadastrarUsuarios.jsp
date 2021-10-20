@@ -15,6 +15,7 @@
         <title>Cadastrar Usuarios</title>
     </head>
     <body class="container">
+        <h1>Cadastro de Usuários</h1>
         <c:if test="${empty usuarios}">
             <form action="CadastrarUsuariosSV" method="POST">
                 <label class="form-label">Nome</label>
@@ -65,7 +66,7 @@
                     <option value="0">Inativo</option>
                 </select>
 
-                <button type="submit">Atualizar</button>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
             </form>
         </c:if>
 
