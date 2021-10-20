@@ -264,13 +264,16 @@ public class ProdutosDAO {
         List<ProdutosImagem> produtosImagem = new ArrayList<>();
         String wQuery = "SELECT *\n"
                 + "FROM produtosimagem AS pi\n"
-                + "JOIN produtos AS P ON pi.cnProduto = p.id";
+                + "JOIN produtos AS P ON pi.cnProduto = p.id where cnProduto=?";
         Connection con;
+       System.out.println(wQuery);
         try {
             con = Conexao.getConexao();
             PreparedStatement ps = con.prepareStatement(wQuery);
             ps.setInt(1, pProduto);
+             
             ResultSet rs = ps.executeQuery();
+            
             while (rs.next()) {
                 int wId = rs.getInt("id");
                 int wCnProduto = rs.getInt("cnProduto");

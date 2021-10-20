@@ -22,8 +22,8 @@
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="index.jsp"> Home</i></a>
                 <a class="p-2 text-dark" data-page="produto">Listar Produtos</a>
-                <a class="p-2 text-dark" data-page="usuario" href="./ListarUsuariosSV">Listar Usuarios</a>
-                <a class="p-2 text-dark" data-page="usuario" href="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
+                <a class="p-2 text-dark" data-page="ListarUsuariosSV">Listar Usuarios</a>
+                <a class="p-2 text-dark" data-page="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
                 <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
             </nav>
             <a class="p-2  btn" data-page="Login" href="login.html">Login</a>
@@ -33,13 +33,10 @@
             <!-- card produtos -->
         </div>
         <div class="cc-loading-full" data-loading-name="loading">
-            <div class="cc-loading-spinner" name="cc-loading-spinner-full" id="cc-loading-spinner-full">
-                <div class="spinner-border cc-text-branco" role="status">
-                    <span class="sr-only">Carregando...</span>
-                </div>
-                <strong class="cc-loading-title">teste</strong>
-            </div>
-            <div class="cc-loading-fade"></div></div>
+
+            <div class="cc-loading-fade"></div>
+                
+        </div>
     </body>
     <script type="text/javascript" src="index.js"></script>
 </html>

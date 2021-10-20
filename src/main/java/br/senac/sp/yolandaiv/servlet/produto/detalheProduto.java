@@ -23,10 +23,10 @@ public class detalheProduto extends HttpServlet {
         String wIdStr = request.getParameter("wId");
         Integer wId = Integer.valueOf(wIdStr);
 
-
         Produtos produtos = ProdutosDAO.getProdutos(wId);
         request.setAttribute("produtos", produtos);
-       
+        List<ProdutosImagem> listaImagens = ProdutosDAO.getImagensDetalhe(wId);
+        request.setAttribute("listaImagens", listaImagens);
         request.getRequestDispatcher("/produto/detalheProduto.jsp").forward(request, response);
 
     }
