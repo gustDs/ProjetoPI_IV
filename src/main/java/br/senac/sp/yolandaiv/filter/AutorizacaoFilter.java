@@ -41,9 +41,9 @@ public class AutorizacaoFilter implements Filter {
         //2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO PARA MÓDULO X
         Usuarios usuario = (Usuarios) session.getAttribute("usuario");
         String url = httpServletRequest.getRequestURI();
-        if(url.contains("/protegido/usuario") && !usuario.isAdministrador()) {
+        if(url.contains("/protegido/usuario") && !usuario.isAdministrador() && !usuario.isDev()) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
-        } else if(url.contains("/protegido/produto") && !usuario.isEstoquista()) {
+        } else if(url.contains("/protegido/produto") && !usuario.isEstoquista() && !usuario.isDev()) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
         }
         

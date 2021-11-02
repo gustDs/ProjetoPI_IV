@@ -21,18 +21,21 @@
             <h5 class="my-0 mr-md-auto font-weight-normal"><img width="200px" style="height: 120px;" name="cc-cli" src="logo.png"></h5>
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="index.jsp"> Home</i></a>
-                <c:if test="${sessionScope.usuario.anPerfil == 'estoquista'}">
+                <c:if test="${sessionScope.usuario.anPerfil == 'estoquista' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="produto">Listar Produtos</a>
                 </c:if>              
-                <c:if test="${sessionScope.usuario.anPerfil == 'administrador'}">
+                <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="ListarUsuariosSV">Listar Usuarios</a>
                 </c:if>
-                <c:if test="${sessionScope.usuario.anPerfil == 'administrador'}">
+                <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
                 </c:if>
                 <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
             </nav>
             <a class="p-2  btn" data-page="Sair" href="LogoutSV">Sair</a>
+            <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
+                <a class="p-2  btn" data-page="Login" href="cliente/cadastrarClientes.jsp">Cadastrar-se</a>
+            </c:if>
         </div>
 
         <div id="container" name="container" class="d-flex">

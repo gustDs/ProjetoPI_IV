@@ -10,6 +10,10 @@ public class Usuarios {
     private String nmSenhaConfirma;
     private int boInativo;
     
+    public boolean isDev() {
+        return anPerfil.equalsIgnoreCase("dev");
+    }
+    
     public boolean isAdministrador() {
         return anPerfil.equalsIgnoreCase("administrador");
     }

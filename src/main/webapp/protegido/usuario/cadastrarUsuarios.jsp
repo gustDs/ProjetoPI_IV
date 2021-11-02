@@ -28,6 +28,7 @@
                                 <select name="anPerfil" id="anPerfil" required="true" class="form-control"><br/>
                                     <option value="administrador">ADM</option>
                                     <option value="estoquista">Estoquista</option>
+                                    <option value="dev">DEV</option>
                                 </select>          
                                 <label>Senha</label>
                                 <input type="text" name="nmSenha" required="true" class="form-control"/><br/>
@@ -45,7 +46,6 @@
                             </form>
                         </c:if>
                         <c:if test="${not empty usuarios}">
-                            <h1>testessssss</h1>
                             <form action="AlterarUsuariosSV" method="POST">
                                 <label>Nome</label>
                                 <input type="text" name="anNome" required="true" value="${usuarios.anNome}" class="form-control"/><br/>
@@ -57,6 +57,7 @@
                                 <select name="anPerfil" id="anPerfil" required="true" value="${usuarios.anPerfil}" class="form-control"><br/>
                                     <option value="administrador">ADM</option>
                                     <option value="estoquista">Estoquista</option>
+                                    <option value="dev">DEV</option>
                                 </select>          
                                 <label>Senha</label>
                                 <input type="text" name="nmSenha" required="true" value="${usuarios.nmSenha}" class="form-control"/><br/>

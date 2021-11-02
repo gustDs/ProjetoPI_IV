@@ -52,6 +52,10 @@
         <servlet-name>LogoutSV</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.LogoutSV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarClientesSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.cliente.CadastrarClientesSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produto</servlet-name>
         <url-pattern>/protegido/produto</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>LogoutSV</servlet-name>
         <url-pattern>/protegido/LogoutSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarClientesSV</servlet-name>
+        <url-pattern>/protegido/cliente/CadastrarClientesSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
