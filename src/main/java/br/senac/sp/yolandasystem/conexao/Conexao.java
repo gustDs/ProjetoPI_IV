@@ -23,11 +23,11 @@ public class Conexao {
      * @throws SQLException
      */
     public static Connection getConexao() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/yolanda3?useSSL=false&useTimezone=true&serverTimezone=UTC";
-        String user = "root";
-        String pass = "knnsys3434@";
+        String wUrl = "jdbc:mysql://localhost:3306/yolanda3?useSSL=false&useTimezone=true&serverTimezone=UTC";
+        String wUser = "root";
+        String wPass = "knnsys3434@";
         
-        return DriverManager.getConnection(url, user, pass);
+        return DriverManager.getConnection(wUrl, wUser, wPass);
     }
     
 }
