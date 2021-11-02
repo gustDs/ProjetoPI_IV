@@ -1,6 +1,7 @@
 
 package br.senac.sp.yolandaiv.filter;
 
+import br.senac.sp.yolandaiv.entidade.Usuarios;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -36,6 +37,17 @@ public class AutorizacaoFilter implements Filter {
         if (session.getAttribute("usuario") == null) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
         }
+        
+        //2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO PARA MÓDULO X
+        Usuarios usuario = (Usuarios) session.getAttribute("usuario");
+        String url = httpServletRequest.getRequestURI();
+        if(url.contains("/protegido/usuario") && !usuario.isAdministrador()) {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
+        } else if(url.contains("/protegido/produto") && !usuario.isEstoquista()) {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
+        }
+        
+        
         
        
 

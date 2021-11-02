@@ -1,7 +1,7 @@
 package br.senac.sp.yolandaiv.entidade;
 
 public class Usuarios {
-
+    
     private String anNome;
     private String nmCpf;
     private String anEmail;
@@ -9,7 +9,15 @@ public class Usuarios {
     private String nmSenha;
     private String nmSenhaConfirma;
     private int boInativo;
-
+    
+    public boolean isAdministrador() {
+        return anPerfil.equalsIgnoreCase("administrador");
+    }
+    
+    public boolean isEstoquista() {
+        return anPerfil.equalsIgnoreCase("estoquista");
+    }
+    
     public int getBoInativo() {
         return boInativo;
     }

@@ -12,7 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1 style="color: red" >Ocorreu um erro! Verifique com a equipe de suporte.</h1>
-        <a href="protegido/index.jsp">Voltar</a>
+        <h1 style="color: red">Você não possui acesso para este módulo!</h1>
     </body>
 </html>

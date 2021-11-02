@@ -48,17 +48,21 @@
         <servlet-name>LoginSV</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.LoginSV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.LogoutSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produto</servlet-name>
         <url-pattern>/protegido/produto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>produtoImagem</servlet-name>
-        <url-pattern>/produtoImagem</url-pattern>
+        <url-pattern>/protegido/produtoImagem</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>detalheProduto</servlet-name>
-        <url-pattern>/detalheProduto</url-pattern>
+        <url-pattern>/protegido/detalheProduto</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>produtoHome</servlet-name>
@@ -66,7 +70,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>imagemDetalhe</servlet-name>
-        <url-pattern>/imagemDetalhe</url-pattern>
+        <url-pattern>/protegido/imagemDetalhe</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>imagemPrincipal</servlet-name>
@@ -78,7 +82,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastrarUsuariosSV</servlet-name>
-        <url-pattern>/protegido/usuario/CadastrarUsuariosSV</url-pattern>
+        <url-pattern>/protegido/CadastrarUsuariosSV</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AlterarUsuariosSV</servlet-name>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>LoginSV</servlet-name>
         <url-pattern>/LoginSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutSV</servlet-name>
+        <url-pattern>/protegido/LogoutSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

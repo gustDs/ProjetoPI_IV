@@ -21,12 +21,18 @@
             <h5 class="my-0 mr-md-auto font-weight-normal"><img width="200px" style="height: 120px;" name="cc-cli" src="logo.png"></h5>
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="index.jsp"> Home</i></a>
-                <a class="p-2 text-dark" data-page="produto">Listar Produtos</a>
-                <a class="p-2 text-dark" data-page="ListarUsuariosSV">Listar Usuarios</a>
-                <a class="p-2 text-dark" data-page="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
+                <c:if test="${sessionScope.usuario.anPerfil == 'estoquista'}">
+                    <a class="p-2 text-dark" data-page="produto">Listar Produtos</a>
+                </c:if>              
+                <c:if test="${sessionScope.usuario.anPerfil == 'administrador'}">
+                    <a class="p-2 text-dark" data-page="ListarUsuariosSV">Listar Usuarios</a>
+                </c:if>
+                <c:if test="${sessionScope.usuario.anPerfil == 'administrador'}">
+                    <a class="p-2 text-dark" data-page="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
+                </c:if>
                 <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
             </nav>
-            <a class="p-2  btn" data-page="Login" href="login.html">Login</a>
+            <a class="p-2  btn" data-page="Sair" href="LogoutSV">Sair</a>
         </div>
 
         <div id="container" name="container" class="d-flex">
@@ -35,7 +41,7 @@
         <div class="cc-loading-full" data-loading-name="loading">
 
             <div class="cc-loading-fade"></div>
-                
+
         </div>
     </body>
     <script type="text/javascript" src="index.js"></script>

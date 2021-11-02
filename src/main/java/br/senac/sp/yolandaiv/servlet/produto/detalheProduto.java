@@ -27,7 +27,7 @@ public class detalheProduto extends HttpServlet {
         request.setAttribute("produtos", produtos);
         List<ProdutosImagem> listaImagens = ProdutosDAO.getImagensDetalhe(wId);
         request.setAttribute("listaImagens", listaImagens);
-        request.getRequestDispatcher("/produto/detalheProduto.jsp").forward(request, response);
+        request.getRequestDispatcher("/protegido/produto/detalheProduto.jsp").forward(request, response);
 
     }
 

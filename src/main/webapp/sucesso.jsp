@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>DEU BOM</h1>
-        <a href="index.jsp">Voltar</a>
+        <h1 style="color: green" >Ação Concluída com Sucesso!</h1>
+        <a href="protegido/index.jsp">Voltar</a>
     </body>
 </html>
