@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: "imagemPrincipal",
+        url: "protegido/imagemPrincipal",
         contentType: "text/plain",
         type: "GET",
         success: function (result) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
                                 <p class="card-text ">${element.anDescricao}</p>
                                 <p class="card-text font-weight-bold">R$ ${element.vlProduto}</p>
                                 <div>
-                                <a class="btn btn-primary w-100 " data-page="detalheProduto?wId=${element.id}">DETALHES</a>
+                                <a class="btn btn-primary w-100 " data-page="protegido/detalheProduto?wId=${element.id}">DETALHES</a>
                                 </div>           
                               </div>
                             </div>
@@ -36,6 +36,7 @@ $(document).ready(function () {
             /* APPEND CARD TO CONTAINER*/
             $("[data-loading-name='loading']").hide()
             $("[name='container']").html(wHtm)
+            $("[data-page]").off("click");
             $("[data-page]").on("click", function () {
                 var wPage = $(this).attr("data-page")
                 var wAjax = $.ajax(wPage)
@@ -56,6 +57,7 @@ $(document).ready(function () {
 
         }
     });
+    $("[data-page]").off("click");
     $("[data-page]").on("click", function () {
         var wPage = $(this).attr("data-page")
         var wAjax = $.ajax(wPage)

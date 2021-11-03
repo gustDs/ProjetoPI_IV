@@ -17,7 +17,7 @@
                 <div class="cc-col w-100">
                     <div class=" border  cc-col cc-col-36" > 
                         <c:if test="${empty usuarios}">
-                            <form action="CadastrarUsuariosSV" method="POST">
+                            <form action="protegido/CadastrarUsuariosSV" method="POST">
                                 <label class="form-label">Nome</label>
                                 <input type="text" name="anNome" required="true" class="form-control"/><br/>
                                 <label>CPF</label>
@@ -46,7 +46,7 @@
                             </form>
                         </c:if>
                         <c:if test="${not empty usuarios}">
-                            <form action="AlterarUsuariosSV" method="POST">
+                            <form action="protegido/AlterarUsuariosSV" method="POST">
                                 <label>Nome</label>
                                 <input type="text" name="anNome" required="true" value="${usuarios.anNome}" class="form-control"/><br/>
                                 <label>CPF</label>

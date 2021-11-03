@@ -112,7 +112,7 @@ $(document).ready(function () {
                 }
                 $.ajax({
                     type: "post",
-                    url: "produtoImagem",
+                    url: "protegido/produtoImagem",
                     data: JSON.stringify(wJson),
                 }).then((res, textStatus, jqXHR) => {
                     var wStatus = jqXHR.status
@@ -120,7 +120,7 @@ $(document).ready(function () {
                         alertify.set("notifier", "position", "top-right");
                         alertify.notify("<p style='color:white;font-size:16px;'>Imagem do Produto Cadastrado com Sucesso com Sucesso</p>", "success", 10);
                         $.ajax({
-                            url: "produto",
+                            url: "protegido/produto",
                         }).done(function (result) {
                             $("[name='container']").html(result)
                         });
@@ -145,7 +145,7 @@ $(document).ready(function () {
                 }
                 $.ajax({
                     type: "PUT",
-                    url: "produtoImagem",
+                    url: "protegido/produtoImagem",
                     data: JSON.stringify(wJson),
                 }).then((res, textStatus, jqXHR) => {
                     var wStatus = jqXHR.status
@@ -199,7 +199,7 @@ $(document).ready(function () {
                 }
                 $.ajax({
                     type: "post",
-                    url: "produto",
+                    url: "protegido/produto",
                     data: JSON.stringify(wJson),
                 }).then((res, textStatus, jqXHR) => {
                     var wStatus = jqXHR.status
@@ -235,7 +235,7 @@ $(document).ready(function () {
             }
             $.ajax({
                 type: "put",
-                url: "produto",
+                url: "protegido/produto",
                 data: JSON.stringify(wJson),
             }).then((res, textStatus, jqXHR) => {
                 var wStatus = jqXHR.status
@@ -263,7 +263,7 @@ $(document).ready(function () {
     /* FUNCTIONS */
     function fGetProduto(pId) {
         $.ajax({
-            url: "produto?Id=" + pId,
+            url: "protegido/produto?Id=" + pId,
         }).done(function (result) {
             var wResult = JSON.parse(result);
             $("[name='id']").val(wResult.id);
@@ -285,7 +285,7 @@ $(document).ready(function () {
         $("[name='nmImagem']").val("");
         $("[name='boImagemPrincipal']").prop("checked", false);
         $.ajax({
-            url: "produtoImagem?produto=" + pProduto,
+            url: "protegido/produtoImagem?produto=" + pProduto,
         }).done(function (result) {
             result = JSON.parse(result);
             if (result.length) {
@@ -316,7 +316,7 @@ $(document).ready(function () {
                     $(this).addClass("cc-tabela-tr-selecionada");
                     /* GET IMG PRODUTO*/
                     $.ajax({
-                        url: "produtoImagem?id=" + $(this).attr("data-id"),
+                        url: "protegido/produtoImagem?id=" + $(this).attr("data-id"),
                     }).done(function (result) {
                         wJson = JSON.parse(result);
                         // debugger;
@@ -379,8 +379,9 @@ $(document).ready(function () {
             return true;
         }
     }
+     $("[data-ref]").off("click");
     $("[data-ref]").on("click", function () {
-        wURI = "produto?" + $(this).attr("data-ref");
+        wURI = "protegido/produto?" + $(this).attr("data-ref");
         $.ajax({
             type: "DELETE",
             url: wURI
@@ -391,7 +392,7 @@ $(document).ready(function () {
                 alertify.set("notifier", "position", "top-right");
                 alertify.notify("<p style='color:white;font-size:16px;'>Produto Alterado com Sucesso com Sucesso</p>", "success", 10);
                 $.ajax({
-                    url: "produto",
+                    url: "protegido/produto",
                 }).done(function (result) {
      
                     $("[name='container']").html(result)

@@ -26,7 +26,7 @@ public class LoginSV extends HttpServlet {
         if (usuario != null) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", usuario);
-            response.sendRedirect(request.getContextPath() + "/protegido/index.jsp");
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
         } else {
             response.sendRedirect(request.getContextPath()+ "/erro.jsp");
         }

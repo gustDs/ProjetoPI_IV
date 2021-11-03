@@ -11,7 +11,7 @@
 <body >
     <div class="cc-row ">
 
-        <div class="row m-auto " style="max-width: 1900px;">
+        <div class="row m-auto " style="max-width: 1100px;">
             <div class="cc-col w-100 "  >
                 <h3>Novo Cadastro</h3>
                 <div class="cc-col w-100">
@@ -33,16 +33,17 @@
                                 <input type="text" name="senha" required="true" class="form-control"/><br/>
                                 <label>CPF</label>
                                 <input type="text" name="cpf" required="true" class="form-control"/><br/>
-                                <label>Logradouro</label>
-                                <input type="text" name="logradouro" required="true" class="form-control"/><br/>
                                 <label>CEP</label>
                                 <input type="text" name="cep" required="true" class="form-control"/><br/>
+                                <label>Logradouro</label>
+                                <input type="text" name="logradouro" required="true" class="form-control"/><br/>
+
                                 <label>Bairro</label>
                                 <input type="text" name="bairro" required="true" class="form-control"/><br/>
                                 <label>Cidade</label>
                                 <input type="text" name="cidade" required="true" class="form-control"/><br/>
                                 <label>UF</label>
-                                <select name="boInativo" id="boInativo" required="true" class="form-control"><br/>
+                                <select name="uf" id="uf" required="true" class="form-control"><br/>
                                     <option value="AC">AC</option>
                                     <option value="AL">AL</option>
                                     <option value="AP">AP</option>
@@ -107,7 +108,7 @@
                                 <div class="p-3">
                                     <button class='cc-btn-verde w-100' type="submit">Atualizar</button>
                                 </div>
-                                
+
                             </form>
                         </c:if>
 
@@ -115,6 +116,6 @@
                 </div>
             </div>
         </div>
-
+        <script type="text/javascript" src="protegido/cliente/cliente.js"></script>
 </body>
 

@@ -55,7 +55,7 @@
                                     </td>
                                     <td>
                                         <c:if test="${not empty produtos}">
-                                            <a href="detalheProduto?wId=${produtos.wId}">DETALHES</a>
+                                            <a href="protegido/detalheProduto?wId=${produtos.wId}">DETALHES</a>
                                         </c:if>
                                     </td>
 
@@ -166,5 +166,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="produto/produto.js"></script>
+<script type="text/javascript" src="protegido/produto/produto.js"></script>
 

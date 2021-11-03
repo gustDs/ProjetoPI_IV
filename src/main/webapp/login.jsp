@@ -14,6 +14,7 @@
     </head>
     <body class="container">
         <h1>Login</h1>
+        <br>
         <form action="LoginSV" method="POST">
             <label>E-mail</label>
             <input type="text" name="anEmail" required="true" class="form-control"/><br/>        

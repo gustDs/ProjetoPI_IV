@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1 style="color: green" >Ação Concluída com Sucesso!</h1>
-        <a href="protegido/index.jsp">Voltar</a>
+        <a href="index.jsp">Voltar</a>
     </body>
 </html>

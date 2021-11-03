@@ -24,7 +24,7 @@
                                 <td>${usuarios.anEmail}</td>
                                 <td>${usuarios.anPerfil}</td>
                                 <td>${usuarios.boInativo}
-                                <td><button class="btn btn btn-info w-100" data-page="AlterarUsuariosSV?anEmail=${usuarios.anEmail}">
+                                <td><button class="btn btn btn-info w-100" data-page="protegido/AlterarUsuariosSV?anEmail=${usuarios.anEmail}">
                                         Alterar
                                     </button>
                                 </td>
@@ -38,6 +38,7 @@
     </div>
 </body>
 <script>
+    $("[data-page]").off("click");
     $("[data-page]").on("click", function () {
         var wPage = $(this).attr("data-page")
         var wAjax = $.ajax(wPage)

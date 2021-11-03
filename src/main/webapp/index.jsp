@@ -22,19 +22,23 @@
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="index.jsp"> Home</i></a>
                 <c:if test="${sessionScope.usuario.anPerfil == 'estoquista' or sessionScope.usuario.anPerfil == 'dev'}">
-                    <a class="p-2 text-dark" data-page="produto">Listar Produtos</a>
+                    <a class="p-2 text-dark" data-page="protegido/produto">Listar Produtos</a>
                 </c:if>              
                 <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
-                    <a class="p-2 text-dark" data-page="ListarUsuariosSV">Listar Usuarios</a>
+                    <a class="p-2 text-dark" data-page="protegido/ListarUsuariosSV">Listar Usuarios</a>
                 </c:if>
                 <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
-                    <a class="p-2 text-dark" data-page="usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
+                    <a class="p-2 text-dark" data-page="protegido/usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
                 </c:if>
-                <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
+                <a class="p-2 text-dark" data-page="    carrinho">Carrinho</a>
+                
+                    <a class="p-2 text-dark" data-page="login.jsp">Logar</a>
+                
+                 
             </nav>
-            <a class="p-2  btn" data-page="Sair" href="LogoutSV">Sair</a>
+            <a class="p-2  btn" data-page="Sair" href="protegido/LogoutSV">Sair</a>
             <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
-                <a class="p-2  btn" data-page="Login" href="cliente/cadastrarClientes.jsp">Cadastrar-se</a>
+                <a class="p-2  btn" data-page="protegido/cliente/cadastrarClientes.jsp"   >Cadastrar-se</a>
             </c:if>
         </div>
 
