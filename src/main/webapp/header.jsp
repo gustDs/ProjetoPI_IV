@@ -23,7 +23,17 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
     <body>
-        <p>Usuário Logado: ${sessionScope.usuario.anNome}</p>
-        <p>Perfil: ${sessionScope.usuario.anPerfil}</p>   
+        <c:if test="${sessionScope.usuario != null}">
+            <p>Usuário Logado: ${sessionScope.usuario.anNome}</p>
+            <p>Perfil: ${sessionScope.usuario.anPerfil}</p>
+        </c:if>
+
+        <c:if test="${sessionScope.clientes != null}">
+            <p>Cliente Logado: ${sessionScope.clientes.nome}</p>
+            <p>Perfil: ${sessionScope.clientes.perfil}</p>
+        </c:if>
+
+
+
     </body>
 </html>

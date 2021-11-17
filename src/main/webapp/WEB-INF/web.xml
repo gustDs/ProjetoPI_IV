@@ -56,6 +56,14 @@
         <servlet-name>CadastrarClientesSV</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.cliente.CadastrarClientesSV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginClienteSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.LoginClienteSV</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarClientesSV</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.cliente.AlterarClientesSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>produto</servlet-name>
         <url-pattern>/protegido/produto</url-pattern>
@@ -102,7 +110,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CadastrarClientesSV</servlet-name>
-        <url-pattern>/protegido/cliente/CadastrarClientesSV</url-pattern>
+        <url-pattern>/CadastrarClientesSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginClienteSV</servlet-name>
+        <url-pattern>/LoginClienteSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarClientesSV</servlet-name>
+        <url-pattern>/AlterarClientesSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -30,7 +30,7 @@
                                 <label>E-mail</label>
                                 <input type="text" name="email" required="true" class="form-control"/><br/>
                                 <label>Senha</label>
-                                <input type="text" name="senha" required="true" class="form-control"/><br/>
+                                <input type="password" name="senha" required="true" class="form-control"/><br/>
                                 <label>CPF</label>
                                 <input type="text" name="cpf" required="true" class="form-control"/><br/>
                                 <label>CEP</label>
@@ -83,32 +83,18 @@
                             </form>
                         </c:if>
                         <c:if test="${not empty usuarios}">
-                            <form action="AlterarUsuariosSV" method="POST">
-                                <label>Nome</label>
-                                <input type="text" name="anNome" required="true" value="${usuarios.anNome}" class="form-control"/><br/>
-                                <label>CPF</label>
-                                <input type="text" name="nmCpf" required="true" value="${usuarios.nmCpf}" class="form-control"/><br/>
-                                <label>E-mail</label>
-                                <input type="text" name="anEmail" required="true" readonly="true" value="${usuarios.anEmail}" class="form-control"/><br/>
-                                <label>Perfil</label>
-                                <select name="anPerfil" id="anPerfil" required="true" value="${usuarios.anPerfil}" class="form-control"><br/>
-                                    <option value="administrador">ADM</option>
-                                    <option value="estoquista">Estoquista</option>
-                                    <option value="dev">DEV</option>
-                                </select>          
-                                <label>Senha</label>
-                                <input type="text" name="nmSenha" required="true" value="${usuarios.nmSenha}" class="form-control"/><br/>
-                                <label>Confirmar Senha</label>
-                                <input type="text" name="nmSenhaConfirma" required="true" value="${usuarios.nmSenhaConfirma}" class="form-control"/><br/>
-                                <label>Status</label>
-                                <select name="boInativo" id="boInativo" required="true" value="${usuarios.boInativo}" class="form-control"><br/>
-                                    <option value="1">Arivo</option>
-                                    <option value="0">Inativo</option>
+                            <form action="AlterarClientesSV" method="POST">
+                                label class="form-label">Nome</label>
+                            <input type="text" name="nome" required="true" value="${clientes.nome}" class="form-control"/><br/>
+                                <label>Data de Nascimento</label>
+                                <input type="date" name="dataNasc" required="true" value="${clientes.dataNasc}" class="form-control"/><br/>
+                                <label>Gênero</label>
+                                <select name="genero" id="genero" required="true" value="${clientes.genero}" class="form-control"><br/>
+                                    <option value="masculino">Masculino</option>
+                                    <option value="feminino">Feminino</option>
                                 </select>
-                                <div class="p-3">
-                                    <button class='cc-btn-verde w-100' type="submit">Atualizar</button>
-                                </div>
-
+                                <label>Senha</label>
+                                <input type="password" name="senha" required="true" value="${clientes.senha}" class="form-control"/><br/>
                             </form>
                         </c:if>
 

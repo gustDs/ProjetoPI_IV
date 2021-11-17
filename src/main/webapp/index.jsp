@@ -30,15 +30,26 @@
                 <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="protegido/usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
                 </c:if>
-                <a class="p-2 text-dark" data-page="    carrinho">Carrinho</a>
-                
+                <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
+
+                <c:if test="${sessionScope.clientes.perfil != 'cliente'}">
                     <a class="p-2 text-dark" data-page="login.jsp">Logar</a>
-                
-                 
+                </c:if>
+
+                <c:if test="${sessionScope.clientes == null}">
+                    <a class="p-2 text-dark" data-page="loginCliente.jsp">Logar como Cliente</a>
+                </c:if>
+
+
+
             </nav>
             <a class="p-2  btn" data-page="Sair" href="protegido/LogoutSV">Sair</a>
-            <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
+
+            <c:if test="${sessionScope.clientes == null}">
                 <a class="p-2  btn" data-page="protegido/cliente/cadastrarClientes.jsp"   >Cadastrar-se</a>
+            </c:if>
+            <c:if test="${sessionScope.clientes != null}">
+                <a class="p-2  btn" data-page="protegido/cliente/atualizarCliente.jsp"   >Alterar Dados</a>
             </c:if>
         </div>
 

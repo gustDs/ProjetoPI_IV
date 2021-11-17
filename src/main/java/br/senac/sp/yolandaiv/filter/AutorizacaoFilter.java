@@ -1,4 +1,3 @@
-
 package br.senac.sp.yolandaiv.filter;
 
 import br.senac.sp.yolandaiv.entidade.Usuarios;
@@ -17,58 +16,53 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AutorizacaoFilter implements Filter {
-    
+
     private static final boolean debug = true;
 
     private FilterConfig filterConfig = null;
-    
+
     public AutorizacaoFilter() {
-    }    
-    
+    }
+
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
-        
+
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        
+
         //1 - VERIFICAR SE USUÁRIO ESTÁ LOGADO
-        
         HttpSession session = httpServletRequest.getSession();
         if (session.getAttribute("usuario") == null) {
             System.out.println("PASSOU AQUI");
-            if(!httpServletRequest.getRequestURI().contains("/imagemPrincipal") && !httpServletRequest.getRequestURI().contains("/detalheProduto") ){
-                 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
+            if (!httpServletRequest.getRequestURI().contains("/imagemPrincipal") && !httpServletRequest.getRequestURI().contains("/detalheProduto") && !httpServletRequest.getRequestURI().contains("/protegido/cliente")) {
+                httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
             }
-           
+
         }
+
         
+
         //2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO PARA MÓDULO X
         Usuarios usuario = (Usuarios) session.getAttribute("usuario");
         String url = httpServletRequest.getRequestURI();
-        if(url.contains("/protegido/usuario") && !usuario.isAdministrador() && !usuario.isDev()) {
+        if (url.contains("/protegido/usuario") && !usuario.isAdministrador() && !usuario.isDev()) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
-        } else if(url.contains("/protegido/produto") && !usuario.isEstoquista() && !usuario.isDev()) {
+        } else if (url.contains("/protegido/produto") && !usuario.isEstoquista() && !usuario.isDev()) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/naoAutorizado.jsp");
         }
-        
-        
-        
-       
 
-    }    
-    
-   
+    }
 
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         if (debug) {
             log("AutorizacaoFilter:doFilter()");
         }
-        
+
         doBeforeProcessing(request, response);
-        
+
         Throwable problem = null;
         try {
             chain.doFilter(request, response);
@@ -79,8 +73,6 @@ public class AutorizacaoFilter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-        
-
 
         // If there was a problem, we want to rethrow it if it is
         // a known type, otherwise log it.
@@ -114,16 +106,16 @@ public class AutorizacaoFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
+            if (debug) {
                 log("AutorizacaoFilter:Initializing filter");
             }
         }
@@ -142,20 +134,20 @@ public class AutorizacaoFilter implements Filter {
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -172,7 +164,7 @@ public class AutorizacaoFilter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -186,9 +178,9 @@ public class AutorizacaoFilter implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }
