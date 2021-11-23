@@ -30,7 +30,7 @@
                 <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="protegido/usuario/cadastrarUsuarios.jsp">Cadastrar Usuarios</a>
                 </c:if>
-                <a class="p-2 text-dark" data-page="carrinho">Carrinho</a>
+                <a class="p-2 text-dark" data-page="protegido/produto/carrinho.jsp">Carrinho</a>
 
                 <c:if test="${sessionScope.clientes.perfil != 'cliente'}">
                     <a class="p-2 text-dark" data-page="login.jsp">Logar</a>

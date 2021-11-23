@@ -16,6 +16,10 @@
         <servlet-name>produtoImagem</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.produto.produtoImagem</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>carrinho</servlet-name>
+        <servlet-class>br.senac.sp.yolandaiv.servlet.produto.carrinho</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>detalheProduto</servlet-name>
         <servlet-class>br.senac.sp.yolandaiv.servlet.produto.detalheProduto</servlet-class>
@@ -75,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>detalheProduto</servlet-name>
         <url-pattern>/protegido/detalheProduto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>carrinho</servlet-name>
+        <url-pattern>/protegido/carrinho</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>produtoHome</servlet-name>

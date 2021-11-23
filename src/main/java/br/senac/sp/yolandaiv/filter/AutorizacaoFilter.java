@@ -33,14 +33,12 @@ public class AutorizacaoFilter implements Filter {
         //1 - VERIFICAR SE USUÁRIO ESTÁ LOGADO
         HttpSession session = httpServletRequest.getSession();
         if (session.getAttribute("usuario") == null) {
-            System.out.println("PASSOU AQUI");
+
             if (!httpServletRequest.getRequestURI().contains("/imagemPrincipal") && !httpServletRequest.getRequestURI().contains("/detalheProduto") && !httpServletRequest.getRequestURI().contains("/protegido/cliente")) {
                 httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
             }
 
         }
-
-        
 
         //2 - VERIFICAR SE O USUÁRIO POSSUI PERMISSÃO PARA MÓDULO X
         Usuarios usuario = (Usuarios) session.getAttribute("usuario");
