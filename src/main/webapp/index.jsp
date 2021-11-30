@@ -22,7 +22,7 @@
             <nav class="my-2 my-md-0 mr-md-3">
                 <a class="p-2 text-dark" href="index.jsp"> Home</i></a>
                 <c:if test="${sessionScope.usuario.anPerfil == 'estoquista' or sessionScope.usuario.anPerfil == 'dev'}">
-                    <a class="p-2 text-dark" data-page="protegido/produto">Listar Produtos</a>
+                    <a class="p-2 text-dark" data-page="protegido/produto">Cadastrar Produtos</a>
                 </c:if>              
                 <c:if test="${sessionScope.usuario.anPerfil == 'administrador' or sessionScope.usuario.anPerfil == 'dev'}">
                     <a class="p-2 text-dark" data-page="protegido/ListarUsuariosSV">Listar Usuarios</a>

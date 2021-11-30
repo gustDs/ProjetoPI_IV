@@ -27,7 +27,7 @@
                     </table>
                 </div>
                 <div class="text-right m-1" >
-                    <button type="button" class="btn btn-success">COMPRAR</button>
+                    <button type="button" data-btn-salvar='1' class="btn btn-success">COMPRAR</button>
                 </div>
             </div>
         </div>
@@ -55,22 +55,42 @@
         let wIdRemove = $(this).attr("data-id")
         $("tr[data-id='" + wIdRemove + "']").remove();
         var wCard = localStorage.getItem("card")
-        var wJson = []
         wCard = JSON.parse(wCard)
         for (let wIdx = 0; wIdx < wCard["data"].length; wIdx++) {
             if (wCard["data"][wIdx]["id"] == wIdRemove) {
-                //alertify.set("notifier", "position", "top-right");
-                //alertify.error("<p style='color:white;font-size:16px;'>Produto já adicionado no carrinho</p>", "danger", 10);
-                wJson = wCard["data"].splice(0, wIdx)
+                console.log("wIdx", wIdx)
+                wCard["data"].splice(wIdx, 1);
+
                 continue;
             }
+
         }
-        var wJsonCarrinho = {
-            data: wJson
-        }
-        //localStorage.setItem("card", JSON.stringify(wJsonCarrinho));
+        localStorage.setItem("card", JSON.stringify(wCard));
         alertify.set("notifier", "position", "top-right");
         alertify.notify("<p style='color:white;font-size:16px;'>Produto Removido do Carrinho com Sucesso</p>", "success", 10);
+    })
+
+    $(document).off("click", "[data-btn-salvar]");
+    $(document).on("click", "[data-btn-salvar]", function (e) {
+        var wCard = localStorage.getItem("card")
+        wCard = JSON.parse(wCard)
+        wCard = wCard.data
+        for (let wIdx = 0; wIdx < wCard.length; wIdx++) {
+            const element = wCard[wIdx];
+            console.log(element)
+
+        }
+
+        var wJson = {
+            id: 22
+        }
+        $.ajax({
+            type: "post",
+            url: "protegido/carrinho",
+            data: JSON.stringify(wJson),
+        }).then((result) => {
+            console.log(result)
+        })
     })
 
 </script>
