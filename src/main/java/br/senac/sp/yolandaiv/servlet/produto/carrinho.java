@@ -1,16 +1,14 @@
 package br.senac.sp.yolandaiv.servlet.produto;
 
-import br.senac.sp.yolandaiv.dao.ProdutosDAO;
-import br.senac.sp.yolandaiv.entidade.Produtos;
+import br.senac.sp.yolandaiv.dao.CarrinhoDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.json.JSONArray;
 
 import org.json.JSONObject;
 
@@ -20,7 +18,6 @@ public class carrinho extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("CHEGUEI AQUI");
         request.getRequestDispatcher("/protegido/produto/carrinho.jsp").forward(request, response);
 
     }
@@ -30,10 +27,10 @@ public class carrinho extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            HttpSession session = httpServletRequest.getSession();
 
-            System.out.println("CHEGOUY AQUU");
-
-            
+            //System.out.println(wSession.getJSONObject(0).getString("anEmail"));
             /* GET BODY JSON */
             StringBuilder buffer = new StringBuilder();
             BufferedReader reader = request.getReader();
@@ -44,29 +41,24 @@ public class carrinho extends HttpServlet {
             }
             String data = buffer.toString();
             JSONObject wJson = new JSONObject(data);
-            String wId = wJson.getString("id");
-            System.out.println("wId " +wId);
-            response.setStatus(200);
-            response.getWriter().write("{\"cnRetorno\":"+wId+"}");
+            JSONArray wData = wJson.getJSONArray("data");
+            int wCardCodigo = -1;
+            String wCliente = (String) session.getAttribute("email");
+            if (wData.length() > 0) {
+                /* CRIA CARRINHO */
+                wCardCodigo = CarrinhoDAO.cadastrarCarrinho(wCliente);
+                /* LOOP PARA CADA ITEM*/
+                for (int i = 0; i < wData.length(); i++) {
+                    /* INSERT ITEM IN CARD */
+                    CarrinhoDAO.insertItem(wCardCodigo, wData.getJSONObject(i).getInt("id"), wData.getJSONObject(i).getInt("qtCompra"), wData.getJSONObject(i).getDouble("vlTotalProduto"));
 
-//
-//            /* GET ITENS JSON*/
-//            String wNmProduto = wJson.getString("nmProduto");
-//            Double wDmAvaliacao = Double.valueOf(wJson.getString("dmAvaliacao"));
-//            String wAnDescricao = wJson.getString("anDescricao");
-//            Double wvlProduto = Double.valueOf(wJson.getString("vlProduto"));
-//            Integer wQtProduto = Integer.valueOf(wJson.getString("qtProduto"));
-//
-//            Produtos produtos = new Produtos(0, wNmProduto, wDmAvaliacao, wAnDescricao, wvlProduto, wQtProduto, 0);
-//            boolean ok = ProdutosDAO.cadastrar(produtos);
-//
-//            if (ok) {
-//                response.setStatus(200);
-//                response.getWriter().write("{\"cnRetorno\":0}");
-//            } else {
-//                response.setStatus(500);
-//                response.getWriter().write("{\"cnRetorno\":1,\"anMensagem\":\"Erro Interno, Contate A Equipe de Suporte Do Sistema\"}");
-//            }
+                }
+                System.out.println("PASSOU");
+            }
+
+            response.setStatus(200);
+            response.getWriter().write("{\"cnRetorno\":" + wCardCodigo + "}");
+
         } catch (Exception e) {
             response.setStatus(500);
             response.getWriter().write("{\"cnRetorno\":1,\"anMensagem\":\"Erro Interno, Contate A Equipe de Suporte Do Sistema\"}");

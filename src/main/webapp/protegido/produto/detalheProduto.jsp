@@ -24,7 +24,7 @@
 
                                                                         <c:set var = "principal"  value = "${imagens.boImgPrincipal}"/>
                                                                         <c:if test = "${principal == 1}">
-                                                                           
+
                                                                             <div class="carousel-item active">
                                                                                 <img class="d-block" src="${imagens.blArquivo}" width="600px" height="500px" alt="First slide">
                                                                             </div>
@@ -87,6 +87,7 @@
 
             var wJsonProduto = ${produtos}
             var wQtdEstoque = parseInt(wJsonProduto.qtProduto);
+            var wVlProduto = wJsonProduto.vlProduto;
             var wQtdCompra = parseInt($("[name='produto-qtd']").val());
             if (wQtdCompra == 0) {
                 alertify.set("notifier", "position", "top-right");
@@ -100,7 +101,8 @@
                 var wJson = {
                     id: wJsonProduto.id,
                     nmProduto: wJsonProduto.nmProduto,
-                    qtCompra: wQtdCompra
+                    qtCompra: wQtdCompra,
+                    vlTotalProduto: (wVlProduto * wQtdCompra)
                 }
                 wCarrinho = localStorage.getItem("card")
                 if (wCarrinho == null) {

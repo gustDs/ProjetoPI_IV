@@ -19,6 +19,7 @@
                         <th>Codigo</th>
                         <th>Item</th>
                         <th>Quantidade</th>
+                        <th>Valor</th>
                         <th></th>
                         </thead>
 
@@ -78,17 +79,20 @@
         for (let wIdx = 0; wIdx < wCard.length; wIdx++) {
             const element = wCard[wIdx];
             console.log(element)
-
         }
 
         var wJson = {
-            id: 22
+            data:  wCard
         }
+        console.log(JSON.stringify(wJson))
         $.ajax({
             type: "post",
             url: "protegido/carrinho",
             data: JSON.stringify(wJson),
         }).then((result) => {
+            alertify.notify("<p style='color:white;font-size:16px;'>Carrinho fechado com sucesso</p>", "success", 10);
+            delete localStorage.card
+            $("[name='data-tbody']").html("")
             console.log(result)
         })
     })

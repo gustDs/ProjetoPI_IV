@@ -1,4 +1,3 @@
-
 package br.senac.sp.yolandaiv.servlet;
 
 import br.senac.sp.yolandaiv.dao.ClientesDAO;
@@ -13,21 +12,21 @@ import javax.servlet.http.HttpSession;
 
 public class LoginClienteSV extends HttpServlet {
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        
+
         Clientes clientes = ClientesDAO.getClienteLogin(email, senha);
-        if(clientes != null) {
+        if (clientes != null) {
             HttpSession sessao = request.getSession();
             sessao.setAttribute("clientes", clientes);
+            sessao.setAttribute("email", email);
             response.sendRedirect(request.getContextPath() + "/index.jsp");
         } else {
-            response.sendRedirect(request.getContextPath()+ "/erro.jsp");
+            response.sendRedirect(request.getContextPath() + "/erro.jsp");
         }
 
     }
